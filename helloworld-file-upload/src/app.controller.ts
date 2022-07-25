@@ -23,7 +23,7 @@ export class AppController {
   @UseInterceptors(FileInterceptor('file'))
   uploadFile(@UploadedFile() file: Express.Multer.File) {
     console.log(file);
-    fs.writeFile('./image.png', file.buffer, function (err) {
+    fs.writeFile('./uploads/image.png', file.buffer, function (err) {
       if (err) throw err;
     });
     // fs.createWriteStream('./image.png', file.buffer).write();
