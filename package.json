@@ -1,0 +1,36 @@
+{
+  "name": "nestjs-playlist",
+  "version": "1.0.0",
+  "description": "### repo https://github.com/louiscklaw/nestjs-playlist",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --loglevel warn --write \"**/*.{js,css,html,jsx,tsx,ts,json}\"",
+    "gitSync": "git fetch --all && git stash && git pull && git stash pop || true",
+    "gitUpdate": "yarn gitSync && git add . && git commit -m\"update nestjs-playlist,\" && yarn gitSync && git push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/louiscklaw/nestjs-playlist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/louiscklaw/nestjs-playlist/issues"
+  },
+  "homepage": "https://github.com/louiscklaw/nestjs-playlist#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "husky": "^4.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format"
+    }
+  },
+  "dependencies": {
+    "prettier": "^2.7.1"
+  }
+}
