@@ -1,4 +1,4 @@
-### xxx.service.ts
+### xxx.service.ts (Providers)
 
 - provide method
 - findAll -> find
@@ -14,7 +14,7 @@
 - create
 - update
 
-### xxx.controller.ts
+### xxx.controller.ts (Controllers)
 
 - endpoint maps to function define
 - Get
@@ -27,7 +27,7 @@
 - field
 - ManyToMany ?
 
-### xxx.module.ts
+### xxx.module.ts (Module)
 
 - import, define module loading
 - controllers
