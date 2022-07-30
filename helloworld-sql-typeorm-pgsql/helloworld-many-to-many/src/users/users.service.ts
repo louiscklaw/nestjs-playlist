@@ -27,9 +27,7 @@ export class UsersService {
   }
 
   async findAll(): Promise<User[]> {
-    return this.usersRepository.find({
-      relations: { tags: true },
-    });
+    return this.usersRepository.find({ relations: { tags: true } });
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
