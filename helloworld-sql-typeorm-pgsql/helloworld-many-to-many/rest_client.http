@@ -40,3 +40,18 @@ Content-Type: application/json
     { "id": 2, "name": "hello_tags2"}
   ]
 }
+
+
+###
+PATCH http://127.0.0.1:3000/users/1
+Content-Type: application/json
+
+{
+  "id":1,
+  "firstName": "hello1",
+  "lastName": "world2",
+  "tags": [
+    { "id": 1, "name": "hello_tags" },
+    { "id": 2, "name": "hello_tags2"}
+  ]
+}

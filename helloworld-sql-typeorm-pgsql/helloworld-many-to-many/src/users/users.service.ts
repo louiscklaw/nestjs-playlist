@@ -2,7 +2,10 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Tag } from "src/tags/entities/tag.entity";
 import { Repository } from "typeorm";
+
 import { CreateUserDto } from "./dto/create-user.dto";
+import { UpdateUserDto } from "./dto/update-user.dto";
+
 import { User } from "./user.entity";
 
 @Injectable()
@@ -27,6 +30,12 @@ export class UsersService {
     return this.usersRepository.find({
       relations: { tags: true },
     });
+  }
+
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    let update_content = { ...updateUserDto, id };
+    console.log({ updateUserDto });
+    return this.usersRepository.save(update_content);
   }
 
   findOne(id: number): Promise<User> {

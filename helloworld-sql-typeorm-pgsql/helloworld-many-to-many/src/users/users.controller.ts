@@ -11,7 +11,10 @@ import {
 } from "@nestjs/common";
 import { Tag } from "src/tags/entities/tag.entity";
 import { TagsService } from "src/tags/tags.service";
+
 import { CreateUserDto } from "./dto/create-user.dto";
+import { UpdateUserDto } from "./dto/update-user.dto";
+
 import { User } from "./user.entity";
 import { UsersService } from "./users.service";
 
@@ -22,6 +25,11 @@ export class UsersController {
   @Post()
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
     return this.usersService.create(createUserDto);
+  }
+
+  @Patch(":id")
+  update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.update(+id, updateUserDto);
   }
 
   @Get("/")
