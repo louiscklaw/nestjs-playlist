@@ -1,6 +1,17 @@
 version: "3"
 
 services:
+  nest:
+    container_name: nest
+    user: 1000:1000
+    image: node:16-buster
+    working_dir: /app
+    volumes:
+      - ./helloworld:/app
+    command: bash -c "npm i -d && npm run build && npm run start"
+    depends_on:
+      - postgres
+
   postgres:
     container_name: postgres_container
     image: postgres
