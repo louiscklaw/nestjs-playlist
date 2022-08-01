@@ -8,7 +8,7 @@ services:
     working_dir: /app
     volumes:
       - ./helloworld:/app
-    command: bash -c "npm i -d && npm run build && npm run start"
+    command: bash -c "npm i -d && npm run start:dev"
     depends_on:
       - postgres
 
