@@ -1,4 +1,4 @@
-import { Tag } from "src/tags/entities/tag.entity";
+import { Tag } from 'src/tags/entities/tag.entity';
 
 export class UpdateUserDto {
   firstName: string;

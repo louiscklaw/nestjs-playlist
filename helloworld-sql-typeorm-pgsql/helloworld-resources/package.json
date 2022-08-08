@@ -17,7 +17,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "echo 'No e2e tests implemented yet.'",
-    "docker_restart": "docker-compose kill && docker-compose up --build -d && docker-compose logs -f"
+    "docker_restart": "docker-compose kill && docker-compose up --build -d && docker-compose logs -f",
+    "format": "prettier --loglevel warn --write \"**/*.{js,css,html,jsx,tsx,ts,json,sh,yml}\""
   },
   "dependencies": {
     "@nestjs/common": "9.0.1",

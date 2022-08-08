@@ -20,11 +20,7 @@ describe('UsersController', () => {
         {
           provide: UsersService,
           useValue: {
-            create: jest
-              .fn()
-              .mockImplementation((user: CreateUserDto) =>
-                Promise.resolve({ id: '1', ...user }),
-              ),
+            create: jest.fn().mockImplementation((user: CreateUserDto) => Promise.resolve({ id: '1', ...user })),
             findAll: jest.fn().mockResolvedValue([
               {
                 firstName: 'firstName #1',
