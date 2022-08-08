@@ -1,0 +1,5 @@
+*.del
+*.log
+*.swp
+*.del
+node_modules
