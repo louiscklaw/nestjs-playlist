@@ -1,7 +1,8 @@
 import { Tag } from 'src/tags/entities/tag.entity';
-import { Column, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-export class Restaurant {
+@Entity()
+export class RestaurantEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -14,10 +15,10 @@ export class Restaurant {
   @Column({ default: true })
   isActive: boolean;
 
-  @ManyToMany(() => Tag, tag => tag.users)
+  @ManyToMany(() => Tag, tag => tag.helloworldRestCrud)
   @JoinTable({
-    name: 'user_tag',
-    joinColumn: { name: 'userId', referencedColumnName: 'id' },
+    name: 'restaurant_tag',
+    joinColumn: { name: 'restaurantId', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'tagId', referencedColumnName: 'id' },
   })
   tags: Tag[];

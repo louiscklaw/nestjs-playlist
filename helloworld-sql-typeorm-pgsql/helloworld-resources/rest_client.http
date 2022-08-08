@@ -1,4 +1,33 @@
 ###
+POST http://127.0.0.1:3000/helloworld-rest-crud
+Content-Type: application/json
+
+{
+  "firstName": "hello",
+  "lastName": "world",
+  "tags": [
+    { "id": 2, "name": "hello_tags2"}
+  ]
+}
+
+###
+GET http://127.0.0.1:3000/restaurants
+
+###
+POST http://127.0.0.1:3000/restaurants
+Content-Type: application/json
+
+{
+  "firstName": "hello",
+  "lastName": "world",
+  "tags": [
+    { "id": 2, "name": "hello_tags2"}
+  ]
+}
+
+
+
+###
 GET http://127.0.0.1:3000/tags
 
 ###
