@@ -7,7 +7,7 @@ import { TagsModule } from "./tags/tags.module";
   imports: [
     TypeOrmModule.forRoot({
       type: "postgres",
-      host: "localhost",
+      host: process.env.HOST_ADDRESS,
       port: 5432,
       username: "postgres",
       password: "postgres",
