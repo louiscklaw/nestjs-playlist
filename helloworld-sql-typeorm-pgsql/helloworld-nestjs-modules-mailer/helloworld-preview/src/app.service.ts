@@ -37,7 +37,6 @@ export class AppService {
           // Data to be sent to template engine.
           code: 'cf1a3f828287',
           username: 'john doe',
-          name: 'john doe',
         },
       })
       .then((success) => {
