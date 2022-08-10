@@ -1,20 +1,14 @@
-import { User } from "src/users/user.entity";
-import {
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from "typeorm";
+import { User } from '../../users/user.entity'
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
 export class Tag {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @Column()
-  name: string;
+  name: string
 
-  @ManyToMany(() => User, (user) => user.tags)
-  users: User[];
+  @ManyToMany(() => User, user => user.tags)
+  users: User[]
 }
