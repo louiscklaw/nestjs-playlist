@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --loglevel warn --write \"**/*.{js,css,html,jsx,tsx,ts,json}\"",
     "gitSync": "git fetch --all && git stash && git pull && git stash pop || true",
-    "gitUpdate": "yarn gitSync && git add . && git commit -m\"update nestjs-playlist,\" && git push"
+    "gitUpdate": "yarn gitSync && git add . && git commit -m\"update nestjs-playlist,\" && git push",
+    "trim": "rimraf **/node_modules"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,8 @@
     }
   },
   "dependencies": {
-    "prettier": "^2.7.1"
+    "@nestjs/serve-static": "^3.0.0",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2"
   }
 }
