@@ -19,9 +19,8 @@ import { TagModule } from './tag/tag.module'
       synchronize: true,
     }),
     UsersModule,
-    // TagsModule,
-    HelloworldModule,
     TagModule,
+    HelloworldModule,
   ],
 })
 export class AppModule {}
