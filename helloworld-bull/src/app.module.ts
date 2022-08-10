@@ -9,10 +9,7 @@ const REDIS_HOST = process.env.HOST_ADDRESS || 'localhost';
 @Module({
   imports: [
     BullModule.forRoot({
-      redis: {
-        host: REDIS_HOST,
-        port: 6379,
-      },
+      redis: { host: REDIS_HOST, port: 6379 },
     }),
     AudioModule,
   ],
