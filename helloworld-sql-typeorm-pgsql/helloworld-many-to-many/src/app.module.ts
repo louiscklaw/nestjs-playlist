@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 
-import { TagsModule } from './tags/tags.module'
+// import { TagsModule } from './tags/tags.module'
 import { UsersModule } from './users/users.module'
+import { HelloworldModule } from './helloworld/helloworld.module'
+import { TagModule } from './tag/tag.module'
 
 @Module({
   imports: [
@@ -17,7 +19,9 @@ import { UsersModule } from './users/users.module'
       synchronize: true,
     }),
     UsersModule,
-    TagsModule,
+    // TagsModule,
+    HelloworldModule,
+    TagModule,
   ],
 })
 export class AppModule {}
