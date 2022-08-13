@@ -1,0 +1,26 @@
+###
+GET http://127.0.0.1:3000/users/helloworld
+
+###
+GET http://127.0.0.1:3000/users
+
+
+###
+POST http://127.0.0.1:3000/users
+Content-Type: application/json
+
+{
+  "firstName": "hello",
+  "lastName": "world",
+  "testStringArray":["hello", "world","hello", "world"],
+  "testStoreObject":
+   {"1":"hello",
+    "2":"world",
+    "3":"hello",
+    "4":"world"
+   }
+}
+
+
+###
+GET http://127.0.0.1:3000/users/delete_all
