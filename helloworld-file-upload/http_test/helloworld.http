@@ -1,15 +1,24 @@
-@PORT=3000
+@PORT=3006
 
 GET http://localhost:{{PORT}}
 
 ###
+GET http://localhost:{{PORT}}/9341d5c0-2daf-4829-803c-1f4ed01584a5.stl
 
+###
+GET http://localhost:{{PORT}}/helloworld.json
+
+
+###
+GET http://localhost:{{PORT}}/uploaded/a3363ef6-cde1-48aa-abac-24c811a3db18.avif
+
+###
 POST https://example.com/comments HTTP/1.1
 content-type: application/json
 
 {
     "name": "sample",
-    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+    "time": "Wed, 21 Oct 2015` 18:27:50 GMT"
 }
 
 ### upload
@@ -17,8 +26,21 @@ POST http://localhost:{{PORT}}/upload
 Content-Type: multipart/form-data; boundary=MyBoundary
 
 --MyBoundary
-Content-Disposition: form-data; name="file"; filename="1.png"
-Content-Type: image/png
+Content-Disposition: form-data; name="file"; filename="food.avif"
+Content-Type: image/avif
 
-< ./1.png
+< ./food.avif
+
+--MyBoundary--
+
+### upload_stl
+POST http://localhost:{{PORT}}/upload_stl
+Content-Type: multipart/form-data; boundary=MyBoundary
+
+--MyBoundary
+Content-Disposition: form-data; name="file"; filename="helloworld.stl"
+Content-Type: application/octet-stream
+
+< ./helloworld.stl
+
 --MyBoundary--
