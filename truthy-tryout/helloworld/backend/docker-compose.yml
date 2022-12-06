@@ -1,0 +1,61 @@
+services:
+  main:
+    container_name: main
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    image: node:14-buster
+    # user: 1000:1000
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    working_dir: /usr/src/app
+    ports:
+      - 7777:7777
+    env_file:
+      - .env
+    # networks:
+    #   - webnet
+    depends_on:
+      - postgres
+    command: sleep infinity
+
+  postgres:
+    container_name: postgres
+    hostname: postgres
+    image: postgres:12
+    env_file:
+      - .env
+    # networks:
+    #   - webnet
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: truthy
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    hostname: redis
+    restart: always
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+    volumes:
+      - .:/data
+    env_file:
+      - .env
+    ports:
+      - 6379:6379
+
+
+# networks:
+#   webnet:
+#     driver: bridge
+
+volumes:
+  pgdata:
