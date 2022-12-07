@@ -17,21 +17,20 @@ const minioClient = new Minio.Client({
 
 var size = 0;
 
+// // Make a bucket called europetrip.
+// minioClient.getObject('helloworld-bucket', 'avatar', (e, dataStream) => {
+//   if (e)  console.log(e)
+
+//   dataStream.on('data', function(chunk) {     size += chunk.length   })
+//   dataStream.on('end', function() {     console.log("End. Total size = " + size)   })
+//   dataStream.on('error', function(e) {     console.log(e)   })
+// })
+
 // Make a bucket called europetrip.
-minioClient.getObject('helloworld-bucket', 'avatar', (e, dataStream) => {
+minioClient.getObject('helloworldbucket', 'test/path/avatar', (e, dataStream) => {
   if (e)  console.log(e)
 
-  dataStream.on('data', function(chunk) {
-    size += chunk.length
-  })
-
-  dataStream.on('end', function() {
-    console.log("End. Total size = " + size)
-  })
-
-  dataStream.on('error', function(e) {
-    console.log(e)
-  })
-
-
+  dataStream.on('data', function(chunk) {    size += chunk.length  })
+  dataStream.on('end', function() {     console.log("End. Total size = " + size)  })
+  dataStream.on('error', function(e) {     console.log(e)   })
 })

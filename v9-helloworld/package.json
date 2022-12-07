@@ -10,7 +10,7 @@
     "gitUpdate": "yarn gitSync && git add . && git commit -m\"update v9-helloworld,\" && git push",
     "trim": "rimraf **/node_modules",
     "docker_rebuild": "docker compose up -d",
-    "into_backend": "docker compose exec -it backend bash"
+    "into_backend": "docker compose exec -it main bash"
   },
   "repository": {
     "type": "git",

@@ -18,13 +18,13 @@ const minioClient = new Minio.Client({
 var file = '/home/logic/_workspace/nestjs-playlist/truthy-tryout/helloworld/interface_https/minio_helloworld/helloworld.jpg'
 
 var metaData = {
-    'Content-Type': 'application/octet-stream',
+    'Content-Type': 'image/jpg',
     'X-Amz-Meta-Testing': 1234,
     "hello":"world",
     "restaurant":"louislabs restaurant"
 }
 
-minioClient.fPutObject('helloworldbucket', 'avatar', file, metaData, (err, etag) => {
+minioClient.fPutObject('helloworldbucket', 'test/path/avatar', file, metaData, (err, etag) => {
   if (err) return console.log(err)
 
   console.log(JSON.stringify(etag))
