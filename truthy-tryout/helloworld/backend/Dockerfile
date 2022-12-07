@@ -1,33 +1,13 @@
-FROM node:14-alpine As development
+FROM node:14-buster
+
+RUN apt update && \
+  apt-get install -qqy musl-dev && \
+  ln -s /usr/lib/x86_64-linux-musl/libc.so /lib/libc.musl-x86_64.so.1
+
+RUN mkdir -p /usr/src/app/node_modules
+
+RUN chown 1000:1000 -R /usr/src/app
+
+USER 1000
 
 WORKDIR /usr/src/app
-
-# COPY package*.json ./
-COPY package.json ./
-
-COPY yarn.lock ./
-
-RUN yarn install
-
-COPY . .
-
-RUN yarn build
-
-FROM node:14-alpine As production
-
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
-WORKDIR /usr/src/app
-
-COPY package.json ./
-
-COPY yarn.lock ./
-
-RUN yarn install --production
-
-COPY . .
-
-COPY --from=development /usr/src/app/dist ./dist
-
-CMD ["node", "dist/main"]
