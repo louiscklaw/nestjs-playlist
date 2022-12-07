@@ -7,7 +7,6 @@ GET http://localhost:7777/health
 ###
 POST http://localhost:7777/auth/login
 content-type: application/json
-
 {
   "username": "admin",
   "password": "Truthy@123",
@@ -48,8 +47,22 @@ Put http://localhost:7777/auth/reset-password
 Put http://localhost:7777/revoke/:id
 
 ###
-Put http://localhost:7777/users/:id
+PUT http://localhost:7777/users/1
+content-type: application/json
 
+{
+  "username": "admin",
+  "address":"new address"
+}
+
+###
+PUT http://localhost:7777/users/1
+content-type: application/json
+
+{
+  "username": "admin",
+  "contact":"new contact"
+}
 
 ###
 POST http://localhost:7777/logout
