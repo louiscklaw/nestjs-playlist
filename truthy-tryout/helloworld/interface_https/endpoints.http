@@ -7,6 +7,7 @@ GET http://localhost:7777/health
 ###
 POST http://localhost:7777/auth/login
 content-type: application/json
+
 {
   "username": "admin",
   "password": "Truthy@123",
