@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Box, Card, Container, Divider, Link, Typography } from '@mui/material';
+import { Box, Button, Card, Container, Divider, Link, Typography } from '@mui/material';
 import { GuestGuard } from '../../components/authentication/guest-guard';
 import { AuthBanner } from '../../components/authentication/auth-banner';
 import { AmplifyLogin } from '../../components/authentication/amplify-login';
@@ -28,6 +28,12 @@ const Login = () => {
   useEffect(() => {
     gtm.push({ event: 'page_view' });
   }, []);
+
+  const handleHelloworldClick = () => {
+    fetch('//localhost:7777')
+      .then(res => res.json())
+      .then(res_json => console.log(res_json));
+  };
 
   return (
     <>
@@ -72,6 +78,7 @@ const Login = () => {
                 flexGrow: 0,
                 flexShrink: 0,
               },
+              display: 'none',
             }}
           >
             <Typography color="textSecondary" variant="caption">
@@ -126,6 +133,8 @@ const Login = () => {
                   Create new account
                 </Link>
               </NextLink>
+
+              <Button onClick={e => handleHelloworldClick(e)}>helloworld</Button>
             </div>
             {platform === 'Amplify' && (
               <Box sx={{ mt: 1 }}>

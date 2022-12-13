@@ -28,6 +28,14 @@ Get http://localhost:7777/users
 
 ###
 Post http://localhost:7777/auth/register
+content-type: application/json
+
+{
+  "username": "demo@devias.io1",
+  "email": "demo1@devias.io",
+  "name": "demo_frontend1",
+  "password": "Password123!"
+}
 
 ###
 Post http://localhost:7777/refresh

@@ -24,6 +24,7 @@ export const AuthBanner = () => (
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
+          display: 'none',
         }}
       >
         <Chip color="primary" label="NEW" sx={{ mr: 2 }} size="small" />

@@ -14,6 +14,17 @@ content-type: application/json
   "remember": true
 }
 
+
+###
+POST http://localhost:7777/auth/login
+content-type: application/json
+
+{
+  "username": "demo@devias.io",
+  "password": "Password123!",
+  "remember": true
+}
+
 ###
 Get http://localhost:7777/auth/activate-account
 

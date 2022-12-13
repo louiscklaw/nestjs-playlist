@@ -29,6 +29,9 @@ export class UserRepository extends BaseRepository<UserEntity, UserSerializer> {
     createUserDto.token = token;
     const user = this.create(createUserDto);
     await user.save();
+
+    // TODO: remove me
+    console.log({ new_user: createUserDto });
     return this.transform(user);
   }
 
