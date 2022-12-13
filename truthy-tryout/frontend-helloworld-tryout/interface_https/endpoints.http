@@ -1,0 +1,96 @@
+GET http://localhost:7777
+
+###
+GET http://localhost:7777/health
+
+
+###
+POST http://localhost:7777/auth/login
+content-type: application/json
+
+{
+  "username": "admin",
+  "password": "Truthy@123",
+  "remember": true
+}
+
+###
+Get http://localhost:7777/auth/activate-account
+
+###
+Get http://localhost:7777/auth/profile
+
+###
+Get http://localhost:7777/auth/token-info
+
+###
+Get http://localhost:7777/users
+
+###
+Post http://localhost:7777/auth/register
+
+###
+Post http://localhost:7777/refresh
+
+###
+Put http://localhost:7777/auth/change-password
+
+###
+Put http://localhost:7777/auth/forgot-password
+
+###
+Put http://localhost:7777/auth/profile
+
+###
+Put http://localhost:7777/auth/reset-password
+
+###
+Put http://localhost:7777/revoke/:id
+
+###
+PUT http://localhost:7777/users/1
+content-type: application/json
+
+{
+  "username": "admin",
+  "address":"new address"
+}
+
+###
+PUT http://localhost:7777/users/1
+content-type: application/json
+
+{
+  "username": "admin",
+  "contact":"new contact"
+}
+
+###
+POST http://localhost:7777/logout
+content-type: application/json
+
+{}
+
+###
+POST http://localhost:7777/users
+content-type: application/json
+
+{
+  "email":"hello@123.com",
+  "name":"hello",
+  "roleId":1,
+  "status":"active",
+  "username":"hello"
+}
+
+###
+GET http://localhost:7777/users/1
+
+###
+GET http://localhost:7777/users
+
+###
+GET http://localhost:7777/dashboard/os
+
+###
+GET http://localhost:7777/dashboard/browser
