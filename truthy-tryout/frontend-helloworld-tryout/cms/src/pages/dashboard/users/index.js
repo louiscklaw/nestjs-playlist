@@ -265,7 +265,7 @@ const CustomerList = () => {
                       </InputAdornment>
                     ),
                   }}
-                  placeholder="Search customers"
+                  placeholder="Search users"
                 />
               </Box>
               <TextField
