@@ -17,6 +17,7 @@ import { ChevronDown as ChevronDownIcon } from '../../../../icons/chevron-down';
 import { PencilAlt as PencilAltIcon } from '../../../../icons/pencil-alt';
 import { gtm } from '../../../../lib/gtm';
 import { getInitials } from '../../../../utils/get-initials';
+import { useRouter } from 'next/router';
 
 const tabs = [
   { label: 'Details', value: 'details' },
@@ -25,6 +26,9 @@ const tabs = [
 ];
 
 const UserDetails = () => {
+  const router = useRouter();
+  const { userId } = router.query;
+
   const isMounted = useMounted();
   const [customer, setCustomer] = useState(null);
   const [currentTab, setCurrentTab] = useState('details');
@@ -58,7 +62,7 @@ const UserDetails = () => {
   };
 
   const getUserById = async () => {
-    return fetch('//localhost:7777/users/1', { method: 'GET', credentials: 'include' }).then(res => res.json());
+    return fetch(`//localhost:7777/users/${userId}`, { method: 'GET', credentials: 'include' }).then(res => res.json());
   };
 
   const [user_info, setUserInfo] = useState({});
@@ -73,6 +77,7 @@ const UserDetails = () => {
       <Head>
         <title>Dashboard: Customer Details | Material Kit Pro</title>
       </Head>
+
       <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth="md">
           <div>

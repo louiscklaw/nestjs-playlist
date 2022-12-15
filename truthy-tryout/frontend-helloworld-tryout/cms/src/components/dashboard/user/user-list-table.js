@@ -131,12 +131,12 @@ export const UserListTable = props => {
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <NextLink href="/dashboard/users/1/edit" passHref>
+                    <NextLink href={`/dashboard/users/${user.id}/edit`} passHref>
                       <IconButton component="a">
                         <PencilAltIcon fontSize="small" />
                       </IconButton>
                     </NextLink>
-                    <NextLink href="/dashboard/users/1" passHref>
+                    <NextLink href={`/dashboard/users/${user.id}`} passHref>
                       <IconButton component="a">
                         <ArrowRightIcon fontSize="small" />
                       </IconButton>
