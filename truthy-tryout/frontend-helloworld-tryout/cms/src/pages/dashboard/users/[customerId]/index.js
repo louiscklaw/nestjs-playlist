@@ -57,9 +57,17 @@ const CustomerDetails = () => {
     setCurrentTab(value);
   };
 
-  if (!customer) {
-    return null;
-  }
+
+  const getUserById = async () => {
+    return fetch('//localhost:7777/users/1', { method: 'GET', credentials: 'include' }).then(res => res.json());
+  };
+
+  const [user_info, setUserInfo] = useState({});
+  useEffect(() => {
+    getUserById(1).then(res_json => setUserInfo(res_json));
+  }, []);
+
+  if (user_info == {}) return <>loading</>;
 
   return (
     <>

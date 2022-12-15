@@ -200,8 +200,6 @@ const CustomerList = () => {
 
   if (users == []) return <>loading</>;
 
-  return <>{JSON.stringify(users, null, 2)}</>;
-
   return (
     <>
       <Head>

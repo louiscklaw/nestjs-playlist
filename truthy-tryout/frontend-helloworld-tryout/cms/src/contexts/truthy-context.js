@@ -110,7 +110,7 @@ export const AuthProvider = props => {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
+      credentials: 'include', // include, *same-origin, omit
       headers: { 'Content-Type': 'application/json' },
       redirect: 'follow', // manual, *follow, error
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -123,9 +123,9 @@ export const AuthProvider = props => {
 
     if (!res.ok) {
       console.log(res);
-      console.debug(`${__filename}, login failed`)
+      console.debug(`${__filename}, login failed`);
     } else {
-      console.debug(`${__filename}, login ok`)
+      console.debug(`${__filename}, login ok`);
       dispatch({
         type: ActionType.LOGIN,
         payload: { user: 'helloworld' },
@@ -139,7 +139,7 @@ export const AuthProvider = props => {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
+      credentials: 'include', // include, *same-origin, omit
       headers: { 'Content-Type': 'application/json' },
       redirect: 'follow', // manual, *follow, error
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -148,14 +148,12 @@ export const AuthProvider = props => {
 
     if (!res.ok) {
       console.log(res);
-      console.debug(`${__filename}, logout failed`)
+      console.debug(`${__filename}, logout failed`);
     } else {
-      console.debug(`${__filename}, logout ok`)
+      console.debug(`${__filename}, logout ok`);
 
       dispatch({ type: ActionType.LOGOUT });
     }
-
-
   };
 
   const register = async (email, name, password) => {
