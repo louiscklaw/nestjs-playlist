@@ -76,28 +76,19 @@ export const AuthProvider = props => {
 
           dispatch({
             type: ActionType.INITIALIZE,
-            payload: {
-              isAuthenticated: true,
-              user,
-            },
+            payload: { isAuthenticated: true, user },
           });
         } else {
           dispatch({
             type: ActionType.INITIALIZE,
-            payload: {
-              isAuthenticated: false,
-              user: null,
-            },
+            payload: { isAuthenticated: false, user: null },
           });
         }
       } catch (err) {
         console.error(err);
         dispatch({
           type: ActionType.INITIALIZE,
-          payload: {
-            isAuthenticated: false,
-            user: null,
-          },
+          payload: { isAuthenticated: false, user: null },
         });
       }
     };
@@ -157,17 +148,41 @@ export const AuthProvider = props => {
   };
 
   const register = async (email, name, password) => {
-    const { accessToken } = await authApi.register({ email, name, password });
-    const user = await authApi.me({ accessToken });
+    // const { accessToken } = await authApi.register({ email, name, password });
+    // const user = await authApi.me({ accessToken });
 
-    localStorage.setItem('accessToken', accessToken);
+    // localStorage.setItem('accessToken', accessToken);
 
-    dispatch({
-      type: ActionType.REGISTER,
-      payload: {
-        user,
-      },
+    // localStorage.removeItem('accessToken');
+    let res = await fetch('//localhost:7777/auth/register', {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'include', // include, *same-origin, omit
+      headers: { 'Content-Type': 'application/json' },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify({
+        username: name,
+        email,
+        name,
+        password,
+      }),
     });
+
+    if (!res.ok) {
+      console.log(res);
+      console.debug(`${__filename}, register failed`);
+    } else {
+      console.debug(`${__filename}, register ok`);
+
+      let user = res.json();
+
+      dispatch({
+        type: ActionType.REGISTER,
+        payload: { user },
+      });
+    }
   };
 
   return (
