@@ -54,6 +54,24 @@ export class UserEntity extends CustomBaseEntity {
   avatar: string;
 
   @Column()
+  address1: string;
+
+  @Column()
+  address2: string;
+
+  @Column()
+  country: string;
+
+  @Column()
+  isVerified: string;
+
+  @Column()
+  phone: string;
+
+  @Column()
+  state: string;
+
+  @Column()
   status: UserStatusEnum;
 
   @Column()

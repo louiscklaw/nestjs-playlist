@@ -24,7 +24,7 @@ const tabs = [
   { label: 'Logs', value: 'logs' },
 ];
 
-const CustomerDetails = () => {
+const UserDetails = () => {
   const isMounted = useMounted();
   const [customer, setCustomer] = useState(null);
   const [currentTab, setCurrentTab] = useState('details');
@@ -57,7 +57,6 @@ const CustomerDetails = () => {
     setCurrentTab(value);
   };
 
-
   const getUserById = async () => {
     return fetch('//localhost:7777/users/1', { method: 'GET', credentials: 'include' }).then(res => res.json());
   };
@@ -85,23 +84,17 @@ const CustomerDetails = () => {
                 </Link>
               </NextLink>
             </Box>
+
             <Grid container justifyContent="space-between" spacing={3}>
-              <Grid
-                item
-                sx={{
-                  alignItems: 'center',
-                  display: 'flex',
-                  overflow: 'hidden',
-                }}
-              >
-                <Avatar src={customer.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
-                  {getInitials(customer.name)}
+              <Grid item sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden' }}>
+                <Avatar src={user_info.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
+                  {getInitials(user_info.name)}
                 </Avatar>
                 <div>
-                  <Typography variant="h4">{customer.email}</Typography>
+                  <Typography variant="h4">{user_info.email}</Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <Typography variant="subtitle2">user_id:</Typography>
-                    <Chip label={customer.id} size="small" sx={{ ml: 1 }} />
+                    <Chip label={user_info.id} size="small" sx={{ ml: 1 }} />
                   </Box>
                 </div>
               </Grid>
@@ -136,13 +129,13 @@ const CustomerDetails = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <CustomerBasicDetails
-                    address1={customer.address1}
-                    address2={customer.address2}
-                    country={customer.country}
-                    email={customer.email}
-                    isVerified={!!customer.isVerified}
-                    phone={customer.phone}
-                    state={customer.state}
+                    address1={user_info.address1}
+                    address2={user_info.address2}
+                    country={user_info.country}
+                    email={user_info.email}
+                    isVerified={!!user_info.isVerified}
+                    phone={user_info.phone}
+                    state={user_info.state}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -165,10 +158,10 @@ const CustomerDetails = () => {
   );
 };
 
-CustomerDetails.getLayout = page => (
+UserDetails.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 
-export default CustomerDetails;
+export default UserDetails;

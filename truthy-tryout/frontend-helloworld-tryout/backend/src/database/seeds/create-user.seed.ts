@@ -32,7 +32,15 @@ export default class CreateUserSeed {
           salt: '$2b$10$O9BWip02GuE14bDPfBomQe',
           name: 'truthy',
           status: UserStatusEnum.ACTIVE,
-          roleId: role.id
+          roleId: role.id,
+          avatar:
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330',
+          address1: '1_address1',
+          address2: '1_address2',
+          country: '1_country',
+          isVerified: '1_isVerified',
+          phone: '1_phone',
+          state: '1_state'
         },
         {
           username: 'demo@devias.io',
@@ -42,9 +50,17 @@ export default class CreateUserSeed {
             '$2b$10$O9BWip02GuE14bDPfBomQe'
           ), // Password123!
           salt: '$2b$10$O9BWip02GuE14bDPfBomQe',
-          name: 'truthy',
+          name: 'demo_name',
           status: UserStatusEnum.ACTIVE,
-          roleId: role.id
+          roleId: role.id,
+          avatar:
+            'https://images.unsplash.com/photo-1633332755192-727a05c4013d',
+          address1: '2_address1',
+          address2: '2_address2',
+          country: '2_country',
+          isVerified: '2_isVerified',
+          phone: '2_phone',
+          state: '2_state'
         }
       ])
       .orIgnore()

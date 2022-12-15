@@ -2,6 +2,8 @@
 
 set -ex
 
+docker compose down
+docker compose kill
 
 docker container prune -f
 docker system prune -f

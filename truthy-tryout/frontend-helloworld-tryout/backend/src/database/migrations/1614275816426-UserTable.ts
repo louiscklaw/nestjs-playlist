@@ -37,51 +37,21 @@ export class UserTable1614275816426 implements MigrationInterface {
             isUnique: true,
             length: '100'
           },
-          {
-            name: 'password',
-            type: 'varchar',
-            isNullable: true
-          },
-          {
-            name: 'name',
-            type: 'varchar',
-            isNullable: true
-          },
-          {
-            name: 'address',
-            type: 'varchar',
-            isNullable: true
-          },
-          {
-            name: 'contact',
-            type: 'varchar',
-            isNullable: true
-          },
-          {
-            name: 'salt',
-            type: 'varchar',
-            isNullable: true
-          },
-          {
-            name: 'token',
-            type: 'varchar',
-            isNullable: true
-          },
-          {
-            name: 'status',
-            type: 'varchar',
-            default: `'active'`
-          },
-          {
-            name: 'createdAt',
-            type: 'timestamp',
-            default: 'now()'
-          },
-          {
-            name: 'updatedAt',
-            type: 'timestamp',
-            default: 'now()'
-          }
+          { name: 'password', type: 'varchar', isNullable: true },
+          { name: 'name', type: 'varchar', isNullable: true },
+          { name: 'address', type: 'varchar', isNullable: true },
+          { name: 'contact', type: 'varchar', isNullable: true },
+          { name: 'salt', type: 'varchar', isNullable: true },
+          { name: 'token', type: 'varchar', isNullable: true },
+          { name: 'address1', type: 'varchar', isNullable: true },
+          { name: 'address2', type: 'varchar', isNullable: true },
+          { name: 'country', type: 'varchar', isNullable: true },
+          { name: 'isVerified', type: 'varchar', isNullable: true },
+          { name: 'phone', type: 'varchar', isNullable: true },
+          { name: 'state', type: 'varchar', isNullable: true },
+          { name: 'status', type: 'varchar', default: `'active'` },
+          { name: 'createdAt', type: 'timestamp', default: 'now()' },
+          { name: 'updatedAt', type: 'timestamp', default: 'now()' }
         ]
       }),
       false

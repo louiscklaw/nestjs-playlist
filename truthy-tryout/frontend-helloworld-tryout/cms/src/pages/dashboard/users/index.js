@@ -195,10 +195,12 @@ const CustomerList = () => {
   };
 
   useEffect(() => {
-    getUsers().then(res_json => setUsers(res_json));
+    getUsers().then(res_json => setUsers(res_json.results));
   }, []);
 
   if (users == []) return <>loading</>;
+
+  // return <>{JSON.stringify(users, null, 2)}</>;
 
   return (
     <>

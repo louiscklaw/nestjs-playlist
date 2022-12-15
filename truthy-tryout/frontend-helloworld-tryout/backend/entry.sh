@@ -2,6 +2,8 @@
 
 set -ex
 
+clear
+
 yarn -d
 
 yarn migrate
