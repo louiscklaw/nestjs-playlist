@@ -13,6 +13,8 @@ import { Logo } from '../../components/logo';
 import { useAuth } from '../../hooks/use-auth';
 import { gtm } from '../../lib/gtm';
 
+import { TruthyRegister } from '../../components/authentication/truthy-register';
+
 const platformIcons = {
   Amplify: '/static/icons/amplify.svg',
   Auth0: '/static/icons/auth0.svg',
@@ -43,16 +45,8 @@ const Register = () => {
           minHeight: '100vh',
         }}
       >
-        <AuthBanner />
-        <Container
-          maxWidth="sm"
-          sx={{
-            py: {
-              xs: '60px',
-              md: '120px',
-            },
-          }}
-        >
+        {/* <AuthBanner /> */}
+        <Container maxWidth="sm" sx={{ py: { xs: '60px', md: '120px' } }}>
           <Box
             sx={{
               alignItems: 'center',
@@ -72,6 +66,7 @@ const Register = () => {
                 flexGrow: 0,
                 flexShrink: 0,
               },
+              display: 'none',
             }}
           >
             <Typography color="textSecondary" variant="caption">
@@ -90,12 +85,7 @@ const Register = () => {
             >
               <NextLink href="/" passHref>
                 <a>
-                  <Logo
-                    sx={{
-                      height: 40,
-                      width: 40,
-                    }}
-                  />
+                  <Logo sx={{ height: 40, width: 40 }} />
                 </a>
               </NextLink>
               <Typography variant="h4">Register</Typography>
@@ -103,16 +93,12 @@ const Register = () => {
                 Register on the internal platform
               </Typography>
             </Box>
-            <Box
-              sx={{
-                flexGrow: 1,
-                mt: 3,
-              }}
-            >
+            <Box sx={{ flexGrow: 1, mt: 3 }}>
               {platform === 'Amplify' && <AmplifyRegister />}
               {platform === 'Auth0' && <Auth0Register />}
               {platform === 'Firebase' && <FirebaseRegister />}
-              {platform === 'JWT' && <JWTRegister />}
+              {platform === 'JWT1' && <JWTRegister />}
+              <TruthyRegister />
             </Box>
             <Divider sx={{ my: 3 }} />
             <div>
