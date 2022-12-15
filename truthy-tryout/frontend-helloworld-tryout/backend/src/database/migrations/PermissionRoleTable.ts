@@ -8,16 +8,8 @@ import {
 
 export class PermissionRoleTable1614275796207 implements MigrationInterface {
   foreignKeysArray = [
-    {
-      table: 'role',
-      field: 'roleId',
-      reference: 'id'
-    },
-    {
-      table: 'permission',
-      field: 'permissionId',
-      reference: 'id'
-    }
+    { table: 'role', field: 'roleId', reference: 'id' },
+    { table: 'permission', field: 'permissionId', reference: 'id' }
   ];
   tableName = 'role_permission';
 

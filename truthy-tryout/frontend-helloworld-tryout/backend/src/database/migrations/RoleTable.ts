@@ -22,21 +22,9 @@ export class RoleTable1614275766942 implements MigrationInterface {
             isUnique: true,
             length: '100'
           },
-          {
-            name: 'description',
-            type: 'text',
-            isNullable: true
-          },
-          {
-            name: 'createdAt',
-            type: 'timestamp',
-            default: 'now()'
-          },
-          {
-            name: 'updatedAt',
-            type: 'timestamp',
-            default: 'now()'
-          }
+          { name: 'description', type: 'text', isNullable: true },
+          { name: 'createdAt', type: 'timestamp', default: 'now()' },
+          { name: 'updatedAt', type: 'timestamp', default: 'now()' }
         ]
       }),
       false

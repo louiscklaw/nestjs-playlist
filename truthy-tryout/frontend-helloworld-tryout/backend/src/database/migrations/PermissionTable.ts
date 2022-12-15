@@ -16,43 +16,18 @@ export class PermissionTable1614275788549 implements MigrationInterface {
             isGenerated: true,
             generationStrategy: 'increment'
           },
-          {
-            name: 'resource',
-            type: 'varchar',
-            length: '100'
-          },
-          {
-            name: 'path',
-            type: 'varchar',
-            isNullable: false
-          },
+          { name: 'resource', type: 'varchar', length: '100' },
+          { name: 'path', type: 'varchar', isNullable: false },
           {
             name: 'description',
             type: 'text',
             isNullable: true,
             isUnique: true
           },
-          {
-            name: 'method',
-            type: 'varchar',
-            default: `'get'`,
-            length: '20'
-          },
-          {
-            name: 'isDefault',
-            type: 'boolean',
-            default: false
-          },
-          {
-            name: 'createdAt',
-            type: 'timestamp',
-            default: 'now()'
-          },
-          {
-            name: 'updatedAt',
-            type: 'timestamp',
-            default: 'now()'
-          }
+          { name: 'method', type: 'varchar', default: `'get'`, length: '20' },
+          { name: 'isDefault', type: 'boolean', default: false },
+          { name: 'createdAt', type: 'timestamp', default: 'now()' },
+          { name: 'updatedAt', type: 'timestamp', default: 'now()' }
         ]
       }),
       false
