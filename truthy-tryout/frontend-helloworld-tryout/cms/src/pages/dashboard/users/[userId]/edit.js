@@ -45,13 +45,13 @@ const UserEdit = () => {
 
   const [user_info, setUserInfo] = useState({});
 
-  const getUserById = async () => {
+  const getUserById = async userId => {
     return fetch(`//localhost:7777/users/${userId}`, { method: 'GET', credentials: 'include' }).then(res => res.json());
   };
 
   useEffect(() => {
-    getUserById().then(res_json => setUserInfo(res_json));
-  }, []);
+    getUserById(userId).then(res_json => setUserInfo(res_json));
+  }, [userId]);
 
   if (user_info == {}) return <>loading</>;
 

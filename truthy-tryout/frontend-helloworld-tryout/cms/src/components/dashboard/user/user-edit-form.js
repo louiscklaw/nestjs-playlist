@@ -18,9 +18,11 @@ import {
 } from '@mui/material';
 import { wait } from '../../../utils/wait';
 
+
 export const UserEditForm = props => {
   const { user_info, ...other } = props;
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
       address1: user_info.address1 || '',
       address2: user_info.address2 || '',
