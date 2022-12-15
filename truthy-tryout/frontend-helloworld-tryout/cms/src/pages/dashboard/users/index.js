@@ -195,27 +195,12 @@ const CustomerList = () => {
   };
 
   useEffect(() => {
-    getUsers().then(res_json => setUsers(res_json.results));
+    getUsers().then(res_json => setUsers(res_json));
   }, []);
 
-  const handleLogin = async () => {
-    await fetch('//localhost:7777/auth/login', {
-      method: 'POST',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify({
-        username: 'admin',
-        password: 'Truthy@123',
-        remember: true,
-      }),
-    });
-  };
-
   if (users == []) return <>loading</>;
+
+  return <>{JSON.stringify(users, null, 2)}</>;
 
   return (
     <>
