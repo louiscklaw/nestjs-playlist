@@ -96,12 +96,22 @@ const Overview = () => {
                 <OverviewBanner onDismiss={handleDismissBanner} />
               </Grid>
             )}
-            <Grid item md={6} xs={12}>
+
+            {/* first row */}
+            <Grid item md={3} xs={12}>
               <OverviewCryptoWallet />
             </Grid>
-            <Grid item md={6} xs={12}>
+            <Grid item md={3} xs={12}>
+              <OverviewCryptoWallet />
+            </Grid>
+            <Grid item md={3} xs={12}>
               <OverviewPrivateWallet />
             </Grid>
+            <Grid item md={3} xs={12}>
+              <OverviewPrivateWallet />
+            </Grid>
+            {/* first row */}
+
             <Grid item md={8} xs={12}>
               <OverviewTotalTransactions />
             </Grid>
