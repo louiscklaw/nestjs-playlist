@@ -11,13 +11,16 @@ import {
   CardContent,
   CardHeader,
   Divider,
+  FormControl,
   Grid,
+  InputLabel,
+  MenuItem,
+  Select,
   Switch,
   TextField,
   Typography,
 } from '@mui/material';
 import { wait } from '../../../utils/wait';
-
 
 export const UserEditForm = props => {
   const { user_info, ...other } = props;
@@ -33,6 +36,7 @@ export const UserEditForm = props => {
       name: user_info.name || '',
       phone: user_info.phone || '',
       state: user_info.state || '',
+      status: user_info.status || 'active',
       submit: null,
     },
     validationSchema: Yup.object({
@@ -62,6 +66,8 @@ export const UserEditForm = props => {
       }
     },
   });
+
+  const handleStatusChange = () => {};
 
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
@@ -190,43 +196,40 @@ export const UserEditForm = props => {
               justifyContent: 'space-between',
             }}
           >
-            <div>
-              <Typography gutterBottom variant="subtitle1">
-                Available to hire
-              </Typography>
-              <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
-                Toggling this will let your teammates know that you are available for acquiring new projects
-              </Typography>
-            </div>
-            <Switch
-              checked={formik.values.hasDiscount}
-              color="primary"
-              edge="start"
-              name="hasDiscount"
-              onChange={formik.handleChange}
-              value={formik.values.hasDiscount}
-            />
+            <Grid container alignItems="center">
+              <Grid item xs={9}>
+                <Typography gutterBottom variant="subtitle1">
+                  Account enabled
+                </Typography>
+                <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
+                  Toggling this will enable / disable account
+                </Typography>
+              </Grid>
+              <Grid item xs={3}>
+                <FormControl fullWidth>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="status"
+                    value={formik.values.status}
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    // onChange={handleStatusChange}
+                  >
+                    <MenuItem value={'active'}>active</MenuItem>
+                    <MenuItem value={'not_active'}>not active</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
           </Box>
         </CardContent>
-        <CardActions
-          sx={{
-            flexWrap: 'wrap',
-            m: -1,
-          }}
-        >
+        <CardActions sx={{ flexWrap: 'wrap', m: -1 }}>
           <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained">
             Update
           </Button>
           <NextLink href="/dashboard/customers/1" passHref>
-            <Button
-              component="a"
-              disabled={formik.isSubmitting}
-              sx={{
-                m: 1,
-                mr: 'auto',
-              }}
-              variant="outlined"
-            >
+            <Button component="a" disabled={formik.isSubmitting} sx={{ m: 1, mr: 'auto' }} variant="outlined">
               Cancel
             </Button>
           </NextLink>
