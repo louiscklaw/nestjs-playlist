@@ -16,8 +16,10 @@ services:
     build:
       # context: .
       dockerfile: cms/Dockerfile
+    restart: unless-stopped
     volumes:
       - ./cms:/usr/src/app
+      - cms_node_modules:/usr/src/app/node_modules
     working_dir: /usr/src/app
     command: sleep infinity
     ports:
@@ -35,7 +37,7 @@ services:
     ports:
       - 7777:7777
     env_file:
-      - ./backend/.env
+      - ./backend/.env.dev
     # networks:
     #   - webnet
     depends_on:
@@ -58,7 +60,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./volumes/postgres/data:/var/lib/postgresql/data
 
   redis:
     image: "redis:alpine"
@@ -79,5 +81,5 @@ services:
 #     driver: bridge
 
 volumes:
-  pgdata:
   backend_node_modules:
+  cms_node_modules:
