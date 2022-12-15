@@ -23,7 +23,7 @@ import { getInitials } from '../../../utils/get-initials';
 import { Scrollbar } from '../../scrollbar';
 
 export const UserListTable = props => {
-  const { customers, customersCount, onPageChange, onRowsPerPageChange, page, rowsPerPage, ...other } = props;
+  const { users, customers, customersCount, onPageChange, onRowsPerPageChange, page, rowsPerPage, ...other } = props;
   const [selectedCustomers, setSelectedCustomers] = useState([]);
 
   // Reset selected customers when customers change
@@ -94,51 +94,40 @@ export const UserListTable = props => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {customers.map(customer => {
-              const isCustomerSelected = selectedCustomers.includes(customer.id);
+            {users.map(user => {
+              const isCustomerSelected = selectedCustomers.includes(user.id);
 
               return (
-                <TableRow hover key={customer.id} selected={isCustomerSelected}>
+                <TableRow hover key={user.id} selected={isCustomerSelected}>
                   <TableCell padding="checkbox">
                     <Checkbox
                       checked={isCustomerSelected}
-                      onChange={event => handleSelectOneCustomer(event, customer.id)}
+                      onChange={event => handleSelectOneCustomer(event, user.id)}
                       value={isCustomerSelected}
                     />
                   </TableCell>
                   <TableCell>
-                    <Box
-                      sx={{
-                        alignItems: 'center',
-                        display: 'flex',
-                      }}
-                    >
-                      <Avatar
-                        src={customer.avatar}
-                        sx={{
-                          height: 42,
-                          width: 42,
-                        }}
-                      >
-                        {getInitials(customer.name)}
+                    <Box sx={{ alignItems: 'center', display: 'flex' }}>
+                      <Avatar src={user.avatar} sx={{ height: 42, width: 42 }}>
+                        {getInitials(user.name)}
                       </Avatar>
                       <Box sx={{ ml: 1 }}>
                         <NextLink href="/dashboard/customers/1" passHref>
                           <Link color="inherit" variant="subtitle2">
-                            {customer.name}
+                            {user.name}
                           </Link>
                         </NextLink>
                         <Typography color="textSecondary" variant="body2">
-                          {customer.email}
+                          {user.email}
                         </Typography>
                       </Box>
                     </Box>
                   </TableCell>
-                  <TableCell>{`${customer.city}, ${customer.state}, ${customer.country}`}</TableCell>
-                  <TableCell>{customer.totalOrders}</TableCell>
+                  <TableCell>{`${user.city}, ${user.state}, ${user.country}`}</TableCell>
+                  <TableCell>{user.totalOrders}</TableCell>
                   <TableCell>
                     <Typography color="success.main" variant="subtitle2">
-                      {numeral(customer.totalAmountSpent).format(`${customer.currency}0,0.00`)}
+                      {numeral(user.totalAmountSpent).format(`${user.currency}0,0.00`)}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">

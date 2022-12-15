@@ -222,11 +222,6 @@ const CustomerList = () => {
       <Head>
         <title>Dashboard: Customer List | Material Kit Pro</title>
       </Head>
-      <div>
-        <button onClick={e => handleLogin(e)}>login</button>
-        <button onClick={e => handleClick(e)}>click</button>
-        <pre>{JSON.stringify(users, null, 2)}</pre>
-      </div>
       <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth="xl">
           <Box sx={{ mb: 4 }}>
@@ -305,6 +300,7 @@ const CustomerList = () => {
               </TextField>
             </Box>
             <UserListTable
+              users={users}
               customers={paginatedCustomers}
               customersCount={filteredCustomers.length}
               onPageChange={handlePageChange}
