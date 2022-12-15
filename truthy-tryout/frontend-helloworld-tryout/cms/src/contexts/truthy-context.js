@@ -123,7 +123,9 @@ export const AuthProvider = props => {
 
     if (!res.ok) {
       console.log(res);
+      console.debug(`${__filename}, login failed`)
     } else {
+      console.debug(`${__filename}, login ok`)
       dispatch({
         type: ActionType.LOGIN,
         payload: { user: 'helloworld' },
