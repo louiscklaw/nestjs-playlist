@@ -7,6 +7,6 @@ RUN apt update && \
 # RUN chown 1000:1000 -R /usr/src/app
 # USER 1000
 
-# RUN mkdir -p /usr/src/app/node_modules
-
+RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app/node_modules
 WORKDIR /usr/src/app
