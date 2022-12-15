@@ -57,16 +57,7 @@ const getSections = t => [
         chip: (
           <Chip
             color="secondary"
-            label={
-              <Typography
-                sx={{
-                  fontSize: '10px',
-                  fontWeight: '600',
-                }}
-              >
-                NEW
-              </Typography>
-            }
+            label={<Typography sx={{ fontSize: '10px', fontWeight: '600' }}>NEW</Typography>}
             size="small"
           />
         ),
@@ -97,6 +88,25 @@ const getSections = t => [
           {
             title: t('Edit'),
             path: '/dashboard/customers/1/edit',
+          },
+        ],
+      },
+      {
+        title: t('Users'),
+        path: '/dashboard/users',
+        icon: <UsersIcon fontSize="small" />,
+        children: [
+          {
+            title: t('List'),
+            path: '/dashboard/users',
+          },
+          {
+            title: t('Details'),
+            path: '/dashboard/users/1',
+          },
+          {
+            title: t('Edit'),
+            path: '/dashboard/users/1/edit',
           },
         ],
       },

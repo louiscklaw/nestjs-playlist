@@ -8,11 +8,7 @@ GET http://localhost:7777/health
 POST http://localhost:7777/auth/login
 content-type: application/json
 
-{
-  "username": "admin",
-  "password": "Truthy@123",
-  "remember": true
-}
+{ "username": "admin", "password": "Truthy@123", "remember": true }
 
 ###
 Get http://localhost:7777/auth/activate-account
@@ -30,12 +26,7 @@ Get http://localhost:7777/users
 Post http://localhost:7777/auth/register
 content-type: application/json
 
-{
-  "username": "demo@devias.io1",
-  "email": "demo1@devias.io",
-  "name": "demo_frontend1",
-  "password": "Password123!"
-}
+{ "username": "demo@devias.io1", "email": "demo1@devias.io", "name": "demo_frontend1", "password": "Password123!" }
 
 ###
 Post http://localhost:7777/refresh
@@ -59,19 +50,13 @@ Put http://localhost:7777/revoke/:id
 PUT http://localhost:7777/users/1
 content-type: application/json
 
-{
-  "username": "admin",
-  "address":"new address"
-}
+{ "username": "admin", "address":"new address" }
 
 ###
 PUT http://localhost:7777/users/1
 content-type: application/json
 
-{
-  "username": "admin",
-  "contact":"new contact"
-}
+{ "username": "admin", "contact":"new contact" }
 
 ###
 POST http://localhost:7777/logout
@@ -83,12 +68,8 @@ content-type: application/json
 POST http://localhost:7777/users
 content-type: application/json
 
-{
-  "email":"hello@123.com",
-  "name":"hello",
-  "roleId":1,
-  "status":"active",
-  "username":"hello"
+{ "email":"hello@123.com",   "name":"hello",
+  "roleId":1, "status":"active", "username":"hello"
 }
 
 ###
