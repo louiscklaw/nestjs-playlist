@@ -6,12 +6,16 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { customerApi } from '../../../../__fake-api__/customer-api';
 import { AuthGuard } from '../../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../../components/dashboard/dashboard-layout';
-import { CustomerEditForm } from '../../../../components/dashboard/user/user-edit-form';
+import { UserEditForm } from '../../../../components/dashboard/user/user-edit-form';
 import { useMounted } from '../../../../hooks/use-mounted';
 import { gtm } from '../../../../lib/gtm';
 import { getInitials } from '../../../../utils/get-initials';
+import { useRouter } from 'next/router';
 
 const UserEdit = () => {
+  const router = useRouter();
+  const { userId } = router.query;
+
   const isMounted = useMounted();
   const [customer, setCustomer] = useState(null);
 
@@ -39,15 +43,24 @@ const UserEdit = () => {
     [],
   );
 
-  if (!customer) {
-    return null;
-  }
+  const [user_info, setUserInfo] = useState({});
+
+  const getUserById = async () => {
+    return fetch(`//localhost:7777/users/${userId}`, { method: 'GET', credentials: 'include' }).then(res => res.json());
+  };
+
+  useEffect(() => {
+    getUserById().then(res_json => setUserInfo(res_json));
+  }, []);
+
+  if (user_info == {}) return <>loading</>;
 
   return (
     <>
       <Head>
         <title>Dashboard: Customer Edit | Material Kit Pro</title>
       </Head>
+
       <Box component="main" sx={{ backgroundColor: 'background.default', flexGrow: 1, py: 8 }}>
         <Container maxWidth="md">
           <Box sx={{ mb: 4 }}>
@@ -58,19 +71,14 @@ const UserEdit = () => {
               </Link>
             </NextLink>
           </Box>
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              overflow: 'hidden',
-            }}
-          >
-            <Avatar src={customer.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
-              {getInitials(customer.name)}
+
+          <Box sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden' }}>
+            <Avatar src={user_info.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
+              {getInitials(user_info.name)}
             </Avatar>
             <div>
               <Typography noWrap variant="h4">
-                {customer.email}
+                {user_info.email}
               </Typography>
               <Box
                 sx={{
@@ -82,12 +90,13 @@ const UserEdit = () => {
                 }}
               >
                 <Typography variant="subtitle2">user_id:</Typography>
-                <Chip label={customer.id} size="small" sx={{ ml: 1 }} />
+                <Chip label={user_info.id} size="small" sx={{ ml: 1 }} />
               </Box>
             </div>
           </Box>
+
           <Box mt={3}>
-            <CustomerEditForm customer={customer} />
+            <UserEditForm user_info={user_info} />
           </Box>
         </Container>
       </Box>

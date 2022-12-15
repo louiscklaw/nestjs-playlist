@@ -18,19 +18,19 @@ import {
 } from '@mui/material';
 import { wait } from '../../../utils/wait';
 
-export const CustomerEditForm = props => {
-  const { customer, ...other } = props;
+export const UserEditForm = props => {
+  const { user_info, ...other } = props;
   const formik = useFormik({
     initialValues: {
-      address1: customer.address1 || '',
-      address2: customer.address2 || '',
-      country: customer.country || '',
-      email: customer.email || '',
-      hasDiscount: customer.hasDiscount || false,
-      isVerified: customer.isVerified || false,
-      name: customer.name || '',
-      phone: customer.phone || '',
-      state: customer.state || '',
+      address1: user_info.address1 || '',
+      address2: user_info.address2 || '',
+      country: user_info.country || '',
+      email: user_info.email || '',
+      hasDiscount: user_info.hasDiscount || false,
+      isVerified: user_info.isVerified || false,
+      name: user_info.name || '',
+      phone: user_info.phone || '',
+      state: user_info.state || '',
       submit: null,
     },
     validationSchema: Yup.object({
@@ -64,7 +64,7 @@ export const CustomerEditForm = props => {
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
       <Card>
-        <CardHeader title="Edit customer" />
+        <CardHeader title="Edit user" />
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
@@ -237,6 +237,6 @@ export const CustomerEditForm = props => {
   );
 };
 
-CustomerEditForm.propTypes = {
-  customer: PropTypes.object.isRequired,
+UserEditForm.propTypes = {
+  user_info: PropTypes.object.isRequired,
 };
