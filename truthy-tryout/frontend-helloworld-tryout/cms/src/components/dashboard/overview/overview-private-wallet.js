@@ -11,26 +11,16 @@ export const OverviewPrivateWallet = props => {
     chart: {
       background: 'transparent',
       stacked: false,
-      toolbar: {
-        show: false,
-      },
+      toolbar: { show: false },
     },
     colors: [theme.palette.secondary.light],
-    fill: {
-      opacity: 1,
-    },
+    fill: { opacity: 1 },
     labels: [],
     plotOptions: {
       radialBar: {
-        dataLabels: {
-          show: false,
-        },
-        hollow: {
-          size: '40%',
-        },
-        track: {
-          background: theme.palette.secondary.dark,
-        },
+        dataLabels: { show: false },
+        hollow: { size: '40%' },
+        track: { background: theme.palette.secondary.dark },
       },
     },
     theme: {
@@ -44,15 +34,11 @@ export const OverviewPrivateWallet = props => {
     <Card {...props}>
       <Box
         sx={{
-          alignItems: {
-            sm: 'center',
-          },
+          alignItems: { sm: 'center' },
           display: 'flex',
           flexWrap: 'wrap',
-          flexDirection: {
-            xs: 'column',
-            sm: 'row',
-          },
+          flexDirection: { xs: 'column', sm: 'row' },
+          padding: '1rem',
         }}
       >
         <Chart height={160} options={chartOptions} series={chartSeries} type="radialBar" width={160} />
@@ -60,28 +46,18 @@ export const OverviewPrivateWallet = props => {
           sx={{
             display: 'flex',
             flexGrow: 1,
-            pt: {
-              sm: 3,
-            },
+            pt: { sm: 3 },
             pb: 3,
             pr: 4,
-            pl: {
-              xs: 4,
-              sm: 0,
-            },
+            pl: { xs: 4, sm: 0 },
           }}
         >
-          <Box
-            sx={{
-              flexGrow: 1,
-              mr: 3,
-            }}
-          >
+          <Box sx={{ flexGrow: 1, mr: 3 }}>
             <Typography color="secondary" variant="h4">
-              $21,500.00
+              999
             </Typography>
             <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
-              Your private wallet
+              total user
             </Typography>
           </Box>
           <Avatar

@@ -99,10 +99,10 @@ const Overview = () => {
 
             {/* first row */}
             <Grid item md={3} xs={12}>
-              <OverviewCryptoWallet />
+              <OverviewPrivateWallet />
             </Grid>
             <Grid item md={3} xs={12}>
-              <OverviewCryptoWallet />
+              <OverviewPrivateWallet />
             </Grid>
             <Grid item md={3} xs={12}>
               <OverviewPrivateWallet />
@@ -111,6 +111,36 @@ const Overview = () => {
               <OverviewPrivateWallet />
             </Grid>
             {/* first row */}
+
+            {/* second row */}
+            <Grid item md={3} xs={12}>
+              <OverviewPrivateWallet />
+            </Grid>
+            <Grid item md={3} xs={12}>
+              <OverviewPrivateWallet />
+            </Grid>
+            <Grid item md={3} xs={12}>
+              <OverviewPrivateWallet />
+            </Grid>
+            <Grid item md={3} xs={12}>
+              <OverviewPrivateWallet />
+            </Grid>
+            {/* second row */}
+
+            {/* third row */}
+            <Grid item md={3} xs={12}>
+              <OverviewPrivateWallet />
+            </Grid>
+            <Grid item md={3} xs={12}>
+              <OverviewPrivateWallet />
+            </Grid>
+            <Grid item md={3} xs={12}>
+              <OverviewPrivateWallet />
+            </Grid>
+            <Grid item md={3} xs={12}>
+              <OverviewPrivateWallet />
+            </Grid>
+            {/* third row */}
 
             <Grid item md={8} xs={12}>
               <OverviewTotalTransactions />

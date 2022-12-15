@@ -44,15 +44,11 @@ export const OverviewCryptoWallet = props => {
     <Card {...props}>
       <Box
         sx={{
-          alignItems: {
-            sm: 'center',
-          },
+          alignItems: { sm: 'center' },
           display: 'flex',
           flexWrap: 'wrap',
-          flexDirection: {
-            xs: 'column',
-            sm: 'row',
-          },
+          flexDirection: { xs: 'column', sm: 'row' },
+          padding: '1rem',
         }}
       >
         <Chart height={160} options={chartOptions} series={chartSeries} type="radialBar" width={160} />
@@ -60,25 +56,15 @@ export const OverviewCryptoWallet = props => {
           sx={{
             display: 'flex',
             flexGrow: 1,
-            pt: {
-              sm: 3,
-            },
+            pt: { sm: 3 },
             pb: 3,
             pr: 4,
-            pl: {
-              xs: 4,
-              sm: 0,
-            },
+            pl: { xs: 4, sm: 0 },
           }}
         >
-          <Box
-            sx={{
-              flexGrow: 1,
-              mr: 3,
-            }}
-          >
+          <Box sx={{ flexGrow: 1, mr: 3 }}>
             <Typography color="primary" variant="h4">
-              0.299 BTC
+              299
             </Typography>
             <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
               Your crypto wallet
