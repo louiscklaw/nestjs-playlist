@@ -112,7 +112,7 @@ export const UserListTable = props => {
                         {getInitials(user.name)}
                       </Avatar>
                       <Box sx={{ ml: 1 }}>
-                        <NextLink href="/dashboard/customers/1" passHref>
+                        <NextLink href="/dashboard/users/1" passHref>
                           <Link color="inherit" variant="subtitle2">
                             {user.name}
                           </Link>
@@ -131,12 +131,12 @@ export const UserListTable = props => {
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <NextLink href="/dashboard/customers/1/edit" passHref>
+                    <NextLink href="/dashboard/users/1/edit" passHref>
                       <IconButton component="a">
                         <PencilAltIcon fontSize="small" />
                       </IconButton>
                     </NextLink>
-                    <NextLink href="/dashboard/customers/1" passHref>
+                    <NextLink href="/dashboard/users/1" passHref>
                       <IconButton component="a">
                         <ArrowRightIcon fontSize="small" />
                       </IconButton>

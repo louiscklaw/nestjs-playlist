@@ -11,7 +11,7 @@ import { useMounted } from '../../../../hooks/use-mounted';
 import { gtm } from '../../../../lib/gtm';
 import { getInitials } from '../../../../utils/get-initials';
 
-const CustomerEdit = () => {
+const UserEdit = () => {
   const isMounted = useMounted();
   const [customer, setCustomer] = useState(null);
 
@@ -48,27 +48,13 @@ const CustomerEdit = () => {
       <Head>
         <title>Dashboard: Customer Edit | Material Kit Pro</title>
       </Head>
-      <Box
-        component="main"
-        sx={{
-          backgroundColor: 'background.default',
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
+      <Box component="main" sx={{ backgroundColor: 'background.default', flexGrow: 1, py: 8 }}>
         <Container maxWidth="md">
           <Box sx={{ mb: 4 }}>
-            <NextLink href="/dashboard/customers" passHref>
-              <Link
-                color="textPrimary"
-                component="a"
-                sx={{
-                  alignItems: 'center',
-                  display: 'flex',
-                }}
-              >
+            <NextLink href="/dashboard/users" passHref>
+              <Link color="textPrimary" component="a" sx={{ alignItems: 'center', display: 'flex' }}>
                 <ArrowBackIcon fontSize="small" sx={{ mr: 1 }} />
-                <Typography variant="subtitle2">Customers</Typography>
+                <Typography variant="subtitle2">Users</Typography>
               </Link>
             </NextLink>
           </Box>
@@ -79,14 +65,7 @@ const CustomerEdit = () => {
               overflow: 'hidden',
             }}
           >
-            <Avatar
-              src={customer.avatar}
-              sx={{
-                height: 64,
-                mr: 2,
-                width: 64,
-              }}
-            >
+            <Avatar src={customer.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
               {getInitials(customer.name)}
             </Avatar>
             <div>
@@ -116,10 +95,10 @@ const CustomerEdit = () => {
   );
 };
 
-CustomerEdit.getLayout = page => (
+UserEdit.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 
-export default CustomerEdit;
+export default UserEdit;

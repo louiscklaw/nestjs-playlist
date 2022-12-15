@@ -66,27 +66,14 @@ const CustomerDetails = () => {
       <Head>
         <title>Dashboard: Customer Details | Material Kit Pro</title>
       </Head>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
+      <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth="md">
           <div>
             <Box sx={{ mb: 4 }}>
-              <NextLink href="/dashboard/customers" passHref>
-                <Link
-                  color="textPrimary"
-                  component="a"
-                  sx={{
-                    alignItems: 'center',
-                    display: 'flex',
-                  }}
-                >
+              <NextLink href="/dashboard/users" passHref>
+                <Link color="textPrimary" component="a" sx={{ alignItems: 'center', display: 'flex' }}>
                   <ArrowBackIcon fontSize="small" sx={{ mr: 1 }} />
-                  <Typography variant="subtitle2">Customers</Typography>
+                  <Typography variant="subtitle2">Users</Typography>
                 </Link>
               </NextLink>
             </Box>
@@ -99,31 +86,19 @@ const CustomerDetails = () => {
                   overflow: 'hidden',
                 }}
               >
-                <Avatar
-                  src={customer.avatar}
-                  sx={{
-                    height: 64,
-                    mr: 2,
-                    width: 64,
-                  }}
-                >
+                <Avatar src={customer.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
                   {getInitials(customer.name)}
                 </Avatar>
                 <div>
                   <Typography variant="h4">{customer.email}</Typography>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                  >
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <Typography variant="subtitle2">user_id:</Typography>
                     <Chip label={customer.id} size="small" sx={{ ml: 1 }} />
                   </Box>
                 </div>
               </Grid>
               <Grid item sx={{ m: -1 }}>
-                <NextLink href="/dashboard/customers/1/edit" passHref>
+                <NextLink href="/dashboard/users/1/edit" passHref>
                   <Button component="a" endIcon={<PencilAltIcon fontSize="small" />} sx={{ m: 1 }} variant="outlined">
                     Edit
                   </Button>
