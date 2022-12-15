@@ -13,6 +13,8 @@ import { Logo } from '../../components/logo';
 import { useAuth } from '../../hooks/use-auth';
 import { gtm } from '../../lib/gtm';
 
+import { TruthyLogin } from '../../components/authentication/truthy-login';
+
 const platformIcons = {
   Amplify: '/static/icons/amplify.svg',
   Auth0: '/static/icons/auth0.svg',
@@ -119,7 +121,9 @@ const Login = () => {
               {platform === 'Amplify' && <AmplifyLogin />}
               {platform === 'Auth0' && <Auth0Login />}
               {platform === 'Firebase' && <FirebaseLogin />}
-              {platform === 'JWT' && <JWTLogin />}
+              {/* {platform === 'JWT' && <JWTLogin />} */}
+              {/* <JWTLogin /> */}
+              <TruthyLogin />
             </Box>
             <Divider sx={{ my: 3 }} />
             <div>
