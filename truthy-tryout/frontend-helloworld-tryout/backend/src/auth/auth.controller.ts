@@ -206,15 +206,6 @@ export class AuthController {
     return this.authService.findById(+id);
   }
 
-  @UseGuards(JwtTwoFactorGuard, PermissionGuard)
-  @Delete('/users/:id')
-  deleteUser(
-    @Param('id')
-    id: string
-  ): Promise<UserSerializer> {
-    console.log('delete user ?');
-    return this.authService.findById(+id);
-  }
 
   @Post('/logout')
   async logOut(

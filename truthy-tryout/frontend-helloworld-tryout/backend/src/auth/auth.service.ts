@@ -250,6 +250,11 @@ export class AuthService {
     });
   }
 
+  async deleteById(id: number): Promise<void> {
+    await this.userRepository.delete({ id });
+    return;
+  }
+
   /**
    * Get all user paginated
    * @param userSearchFilterDto

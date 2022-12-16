@@ -260,7 +260,12 @@ export const UserEditForm = props => {
               Cancel
             </Button>
           </NextLink>
-          <Button onClick={e => handleDeleteUserClick(e)} color="error" disabled={formik.isSubmitting}>
+          <Button
+            onClick={e => handleDeleteUserClick(e)}
+            color="error"
+            disabled={formik.isSubmitting}
+            sx={{ display: 'none' }}
+          >
             Delete user
           </Button>
         </CardActions>
