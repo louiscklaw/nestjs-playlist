@@ -61,6 +61,10 @@ content-type: application/json
 
 { "username": "admin", "address":"new address" }
 
+
+###
+DELETE http://localhost:7777/users/1
+
 ###
 PUT http://localhost:7777/users/1
 content-type: application/json

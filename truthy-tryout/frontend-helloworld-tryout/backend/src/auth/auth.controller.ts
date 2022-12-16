@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Delete,
   HttpCode,
   HttpStatus,
   Param,
@@ -202,6 +203,16 @@ export class AuthController {
     @Param('id')
     id: string
   ): Promise<UserSerializer> {
+    return this.authService.findById(+id);
+  }
+
+  @UseGuards(JwtTwoFactorGuard, PermissionGuard)
+  @Delete('/users/:id')
+  deleteUser(
+    @Param('id')
+    id: string
+  ): Promise<UserSerializer> {
+    console.log('delete user ?');
     return this.authService.findById(+id);
   }
 

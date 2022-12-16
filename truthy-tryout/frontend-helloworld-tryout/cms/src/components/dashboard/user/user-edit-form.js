@@ -96,6 +96,12 @@ export const UserEditForm = props => {
     },
   });
 
+  const handleDeleteUserClick = () => {
+    fetch(`//locahost:7777/users/${user_info.id}`, { method: 'DELETE', credentials: 'include' })
+      .then(res => res.json())
+      .then(resJson => console.log('helloworld delete'));
+  };
+
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
       <Card>
@@ -254,7 +260,7 @@ export const UserEditForm = props => {
               Cancel
             </Button>
           </NextLink>
-          <Button color="error" disabled={formik.isSubmitting}>
+          <Button onClick={e => handleDeleteUserClick(e)} color="error" disabled={formik.isSubmitting}>
             Delete user
           </Button>
         </CardActions>
