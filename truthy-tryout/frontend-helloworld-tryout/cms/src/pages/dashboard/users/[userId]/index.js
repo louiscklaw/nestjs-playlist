@@ -6,7 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { customerApi } from '../../../../__fake-api__/customer-api';
 import { AuthGuard } from '../../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../../components/dashboard/dashboard-layout';
-import { CustomerBasicDetails } from '../../../../components/dashboard/user/user-basic-details';
+import { UserBasicDetails } from '../../../../components/dashboard/user/user-basic-details';
 import { CustomerDataManagement } from '../../../../components/dashboard/user/user-data-management';
 import { CustomerEmailsSummary } from '../../../../components/dashboard/user/user-emails-summary';
 import { CustomerInvoices } from '../../../../components/dashboard/user/user-invoices';
@@ -65,12 +65,12 @@ const UserDetails = () => {
     return fetch(`//localhost:7777/users/${userId}`, { method: 'GET', credentials: 'include' }).then(res => res.json());
   };
 
-  const [user_info, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
     getUserById(1).then(res_json => setUserInfo(res_json));
   }, []);
 
-  if (user_info == {}) return <>loading</>;
+  if (userInfo == {}) return <>loading</>;
 
   return (
     <>
@@ -92,14 +92,14 @@ const UserDetails = () => {
 
             <Grid container justifyContent="space-between" spacing={3}>
               <Grid item sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden' }}>
-                <Avatar src={user_info.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
-                  {getInitials(user_info.name)}
+                <Avatar src={userInfo.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
+                  {getInitials(userInfo.name)}
                 </Avatar>
                 <div>
-                  <Typography variant="h4">{user_info.email}</Typography>
+                  <Typography variant="h4">{userInfo.email}</Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <Typography variant="subtitle2">user_id:</Typography>
-                    <Chip label={user_info.id} size="small" sx={{ ml: 1 }} />
+                    <Chip label={userInfo.id} size="small" sx={{ ml: 1 }} />
                   </Box>
                 </div>
               </Grid>
@@ -133,14 +133,15 @@ const UserDetails = () => {
             {currentTab === 'details' && (
               <Grid container spacing={3}>
                 <Grid item xs={12}>
-                  <CustomerBasicDetails
-                    address1={user_info.address1}
-                    address2={user_info.address2}
-                    country={user_info.country}
-                    email={user_info.email}
-                    isVerified={!!user_info.isVerified}
-                    phone={user_info.phone}
-                    state={user_info.state}
+                  <UserBasicDetails
+                    userInfo={userInfo}
+                    address1={userInfo.address1}
+                    address2={userInfo.address2}
+                    country={userInfo.country}
+                    email={userInfo.email}
+                    isVerified={!!userInfo.isVerified}
+                    phone={userInfo.phone}
+                    state={userInfo.state}
                   />
                 </Grid>
                 <Grid item xs={12}>

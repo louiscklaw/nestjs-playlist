@@ -5,13 +5,7 @@ export const PropertyListItem = props => {
   const { align, children, disableGutters, value, label, ...other } = props;
 
   return (
-    <ListItem
-      sx={{
-        px: disableGutters ? 0 : 3,
-        py: 1.5,
-      }}
-      {...other}
-    >
+    <ListItem sx={{ px: disableGutters ? 0 : 3, py: 1.5 }} {...other}>
       <ListItemText
         disableTypography
         primary={
@@ -20,12 +14,7 @@ export const PropertyListItem = props => {
           </Typography>
         }
         secondary={
-          <Box
-            sx={{
-              flex: 1,
-              mt: align === 'vertical' ? 0.5 : 0,
-            }}
-          >
+          <Box sx={{ flex: 1, mt: align === 'vertical' ? 0.5 : 0 }}>
             {children || (
               <Typography color="textSecondary" variant="body2">
                 {value}
