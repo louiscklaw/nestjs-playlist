@@ -27,6 +27,9 @@ Get http://localhost:7777/auth/token-info
 Get http://localhost:7777/users
 
 ###
+Get http://localhost:7777/roles
+
+###
 Post http://localhost:7777/auth/register
 content-type: application/json
 
