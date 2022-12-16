@@ -21,7 +21,7 @@ import { useRouter } from 'next/router';
 
 const tabs = [
   { label: 'Details', value: 'details' },
-  { label: 'Invoices', value: 'invoices' },
+  { label: 'Users', value: 'users' },
   { label: 'Logs', value: 'logs' },
 ];
 
@@ -156,7 +156,7 @@ const RoleDetails = () => {
               </Grid>
             )}
 
-            {currentTab === 'invoices' && <CustomerInvoices />}
+            {currentTab === 'users' && <CustomerInvoices />}
             {currentTab === 'logs' && <CustomerLogs />}
           </Box>
         </Container>
