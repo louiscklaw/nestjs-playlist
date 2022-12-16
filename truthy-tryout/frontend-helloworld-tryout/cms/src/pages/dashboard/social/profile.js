@@ -58,7 +58,21 @@ export const SocialProfile = () => {
     setCurrentTab(value);
   };
 
+  let [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    fetch('//localhost:7777/users/1', { credentials: 'include' })
+      .then(res => res.json())
+      .then(resJson => {
+        setUserInfo(resJson);
+        console.log(resJson);
+      });
+  }, []);
+
   if (!profile) {
+    return null;
+  }
+
+  if (userInfo == {}) {
     return null;
   }
 
@@ -67,13 +81,8 @@ export const SocialProfile = () => {
       <Head>
         <title>Dashboard: Social Profile | Material Kit Pro</title>
       </Head>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
+
+      <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth="lg">
           <Box
             style={{ backgroundImage: `url(${profile.cover})` }}
@@ -95,17 +104,11 @@ export const SocialProfile = () => {
               startIcon={<AddPhotoIcon fontSize="small" />}
               sx={{
                 backgroundColor: blueGrey[900],
-                bottom: {
-                  lg: 24,
-                  xs: 'auto',
-                },
+                bottom: { lg: 24, xs: 'auto' },
                 color: 'common.white',
                 position: 'absolute',
                 right: 24,
-                top: {
-                  lg: 'auto',
-                  xs: 24,
-                },
+                top: { lg: 'auto', xs: 24 },
                 visibility: 'hidden',
                 '&:hover': {
                   backgroundColor: blueGrey[900],
@@ -116,35 +119,16 @@ export const SocialProfile = () => {
               Change Cover
             </Button>
           </Box>
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              mt: 5,
-            }}
-          >
-            <Avatar
-              src={profile.avatar}
-              sx={{
-                height: 64,
-                width: 64,
-              }}
-            />
+          <Box sx={{ alignItems: 'center', display: 'flex', mt: 5 }}>
+            <Avatar src={userInfo.avatar} sx={{ height: 64, width: 64 }} />
             <Box sx={{ ml: 2 }}>
               <Typography color="textSecondary" variant="overline">
-                {profile.bio}
+                {userInfo?.role?.name || ''}
               </Typography>
-              <Typography variant="h6">{profile.name}</Typography>
+              <Typography variant="h6">{userInfo.name}</Typography>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
-            <Box
-              sx={{
-                display: {
-                  md: 'block',
-                  xs: 'none',
-                },
-              }}
-            >
+            <Box sx={{ display: { md: 'block', xs: 'none' } }}>
               {connectedStatus === 'not_connected' && (
                 <Button
                   onClick={handleConnectToggle}
@@ -196,7 +180,7 @@ export const SocialProfile = () => {
             </Tabs>
             <Divider />
             <Box sx={{ py: 3 }}>
-              {currentTab === 'timeline' && <SocialTimeline profile={profile} />}
+              {currentTab === 'timeline' && <SocialTimeline userInfo={userInfo} profile={profile} />}
               {currentTab === 'connections' && <SocialConnections />}
             </Box>
           </Container>

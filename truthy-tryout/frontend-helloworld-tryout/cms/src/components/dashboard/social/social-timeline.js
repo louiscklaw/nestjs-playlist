@@ -9,7 +9,7 @@ import { SocialAbout } from './social-about';
 
 export const SocialTimeline = props => {
   const isMounted = useMounted();
-  const { profile, ...other } = props;
+  const { userInfo, profile, ...other } = props;
   const [posts, setPosts] = useState([]);
 
   const getPosts = useCallback(async () => {
@@ -36,7 +36,7 @@ export const SocialTimeline = props => {
             currentCity={profile.currentCity}
             currentJobCompany={profile.currentJobCompany}
             currentJobTitle={profile.currentJobTitle}
-            email={profile.email}
+            email={userInfo.email}
             originCity={profile.originCity}
             previousJobCompany={profile.previousJobCompany}
             previousJobTitle={profile.previousJobTitle}
