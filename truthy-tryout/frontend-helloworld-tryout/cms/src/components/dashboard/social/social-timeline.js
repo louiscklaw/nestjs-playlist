@@ -33,6 +33,7 @@ export const SocialTimeline = props => {
       <Grid container spacing={4}>
         <Grid item lg={4} xs={12}>
           <SocialAbout
+            userInfo={userInfo}
             currentCity={profile.currentCity}
             currentJobCompany={profile.currentJobCompany}
             currentJobTitle={profile.currentJobTitle}

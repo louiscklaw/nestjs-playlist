@@ -20,6 +20,7 @@ import { Mail as MailIcon } from '../../../icons/mail';
 
 export const SocialAbout = props => {
   const {
+    userInfo,
     currentCity,
     currentJobCompany,
     currentJobTitle,
@@ -101,19 +102,18 @@ export const SocialAbout = props => {
                 <ListItemText
                   disableTypography
                   primary={
-                    <Typography variant="subtitle2">
-                      Lives in{' '}
-                      <Link color="textPrimary" href="#" variant="subtitle2">
-                        {currentCity}
-                      </Link>
-                    </Typography>
+                    <>
+                      <Typography variant="subtitle2">
+                        {userInfo.address}
+                        <br />
+                      </Typography>
+                    </>
                   }
                   secondary={
                     <Typography color="textSecondary" variant="body2">
-                      Originally from{' '}
-                      <Link color="textSecondary" href="#" variant="body2">
-                        {originCity}
-                      </Link>
+                      {userInfo.address1}
+                      <br />
+                      {userInfo.address2}
                     </Typography>
                   }
                 />
