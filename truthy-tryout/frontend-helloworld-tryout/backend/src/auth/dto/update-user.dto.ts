@@ -30,7 +30,32 @@ export class UpdateUserDto {
   @ApiPropertyOptional()
   @ValidateIf((object, value) => value)
   @IsString()
+  phone: string;
+
+  @ApiPropertyOptional()
+  @ValidateIf((object, value) => value)
+  @IsString()
+  state: string;
+
+  @ApiPropertyOptional()
+  @ValidateIf((object, value) => value)
+  @IsString()
+  country: string;
+
+  @ApiPropertyOptional()
+  @ValidateIf((object, value) => value)
+  @IsString()
   address: string;
+
+  @ApiPropertyOptional()
+  @ValidateIf((object, value) => value)
+  @IsString()
+  address1: string;
+
+  @ApiPropertyOptional()
+  @ValidateIf((object, value) => value)
+  @IsString()
+  address2: string;
 
   @ApiPropertyOptional()
   @ValidateIf((object, value) => value)

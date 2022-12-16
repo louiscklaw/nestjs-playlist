@@ -40,23 +40,52 @@ export const UserEditForm = props => {
       submit: null,
     },
     validationSchema: Yup.object({
-      address1: Yup.string().max(255),
-      address2: Yup.string().max(255),
-      country: Yup.string().max(255),
-      email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-      hasDiscount: Yup.bool(),
-      isVerified: Yup.bool(),
-      name: Yup.string().max(255).required('Name is required'),
-      phone: Yup.string().max(15),
+      // address1: Yup.string().max(255),
+      // address2: Yup.string().max(255),
+      // country: Yup.string().max(255),
+      // email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+      // hasDiscount: Yup.bool(),
+      // isVerified: Yup.bool(),
+      // name: Yup.string().max(255).required('Name is required'),
+      // phone: Yup.string().max(15),
       state: Yup.string().max(255),
     }),
     onSubmit: async (values, helpers) => {
       try {
+        console.log('submit?');
+        fetch('//localhost:7777/users/1', {
+          method: 'PUT',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: values.name,
+            email: values.email,
+            name: values.name,
+            contact: 'updated ?',
+            address1: values.address1,
+            address2: values.address2,
+            country: values.country,
+            // isVerified: true,
+            phone: values.phone,
+            state: values.state,
+            status: values.status,
+            // isTwoFAEnabled: false,
+            // role: {
+            //   id: 1,
+            //   name: 'superuser',
+            // },
+          }),
+        })
+          .then(res => res.json())
+          .then(resJson => {
+            console.log(resJson);
+            toast.success('Customer updated!');
+          });
+
         // NOTE: Make API request
-        await wait(500);
-        helpers.setStatus({ success: true });
-        helpers.setSubmitting(false);
-        toast.success('Customer updated!');
+        // await wait(500);
+        // helpers.setStatus({ success: true });
+        // helpers.setSubmitting(false);
       } catch (err) {
         console.error(err);
         toast.error('Something went wrong!');
@@ -66,8 +95,6 @@ export const UserEditForm = props => {
       }
     },
   });
-
-  const handleStatusChange = () => {};
 
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
@@ -163,14 +190,7 @@ export const UserEditForm = props => {
               />
             </Grid>
           </Grid>
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'space-between',
-              mt: 3,
-            }}
-          >
+          <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', mt: 3 }}>
             <div>
               <Typography gutterBottom variant="subtitle1">
                 Make Contact Info Public
@@ -217,7 +237,8 @@ export const UserEditForm = props => {
                     // onChange={handleStatusChange}
                   >
                     <MenuItem value={'active'}>active</MenuItem>
-                    <MenuItem value={'not_active'}>not active</MenuItem>
+                    <MenuItem value={'inactive'}>inactive</MenuItem>
+                    <MenuItem value={'blocked'}>blocked</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -228,7 +249,7 @@ export const UserEditForm = props => {
           <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained">
             Update
           </Button>
-          <NextLink href="/dashboard/customers/1" passHref>
+          <NextLink href={`/dashboard/users/${user_info.id}`} passHref>
             <Button component="a" disabled={formik.isSubmitting} sx={{ m: 1, mr: 'auto' }} variant="outlined">
               Cancel
             </Button>

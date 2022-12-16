@@ -8,7 +8,11 @@ GET http://localhost:7777/health
 POST http://localhost:7777/auth/login
 content-type: application/json
 
-{ "username": "admin", "password": "Truthy@123", "remember": true }
+{
+  "username": "admin",
+  "password": "Truthy@123",
+  "remember": true
+}
 
 ###
 Get http://localhost:7777/auth/activate-account
@@ -26,7 +30,12 @@ Get http://localhost:7777/users
 Post http://localhost:7777/auth/register
 content-type: application/json
 
-{ "username": "demo@devias.io1", "email": "demo1@devias.io", "name": "demo_frontend1", "password": "Password123!" }
+{
+  "username": "demo@devias.io1",
+  "email": "demo1@devias.io",
+  "name": "demo_frontend1",
+  "password": "Password123!"
+}
 
 ###
 Post http://localhost:7777/refresh
