@@ -18,7 +18,8 @@ export default class CreateRestaurantSeed {
           .map((r, i) => {
             return {
               name: `example_restaurant_${i}`,
-              email: `admin_${i}@truthy.com`
+              email: `admin_${i}@truthy.com`,
+              description: `restaurant ${i} description`
             };
           })
       )

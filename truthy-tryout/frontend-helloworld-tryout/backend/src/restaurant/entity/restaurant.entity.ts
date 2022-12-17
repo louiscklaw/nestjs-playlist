@@ -17,15 +17,14 @@ import { CustomBaseEntity } from 'src/common/entity/custom-base.entity';
 
 @Entity({ name: 'restaurant' })
 export class RestaurantEntity extends CustomBaseEntity {
-  @Index({
-    unique: true
-  })
+  @Index({ unique: true })
   @Column()
-  username: string;
+  name: string;
 
-  @Index({
-    unique: true
-  })
+  @Index({ unique: true })
   @Column()
   email: string;
+
+  @Column()
+  description: string;
 }

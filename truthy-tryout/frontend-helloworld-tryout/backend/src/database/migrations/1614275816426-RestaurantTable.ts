@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 export class RestaurantTable1614275816426 implements MigrationInterface {
-  indexFields = ['name', 'email', 'username'];
+  indexFields = ['name', 'email'];
   tableName = 'restaurant';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -31,6 +31,13 @@ export class RestaurantTable1614275816426 implements MigrationInterface {
             length: '100'
           },
           {
+            name: 'description',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '200'
+          },
+          {
             name: 'email',
             type: 'varchar',
             isNullable: false,
@@ -38,7 +45,6 @@ export class RestaurantTable1614275816426 implements MigrationInterface {
             length: '100'
           },
           { name: 'password', type: 'varchar', isNullable: true },
-          { name: 'name', type: 'varchar', isNullable: true },
           { name: 'address', type: 'varchar', isNullable: true },
           { name: 'contact', type: 'varchar', isNullable: true },
           { name: 'salt', type: 'varchar', isNullable: true },
