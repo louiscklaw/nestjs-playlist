@@ -27,4 +27,22 @@ export class RestaurantEntity extends CustomBaseEntity {
 
   @Column()
   description: string;
+
+  @Column()
+  website: string;
+
+  @Column()
+  openStatus: OpenStatusEnum;
+
+  @Column()
+  favorite: string;
+
+  @Column()
+  avatar: string;
+
+  @Column()
+  background: string;
+
+  @Column()
+  assentColor: string;
 }

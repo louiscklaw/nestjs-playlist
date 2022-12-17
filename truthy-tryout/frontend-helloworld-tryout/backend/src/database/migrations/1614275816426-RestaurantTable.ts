@@ -31,19 +31,62 @@ export class RestaurantTable1614275816426 implements MigrationInterface {
             length: '100'
           },
           {
-            name: 'description',
-            type: 'varchar',
-            isNullable: true,
-            isUnique: false,
-            length: '200'
-          },
-          {
             name: 'email',
             type: 'varchar',
             isNullable: false,
             isUnique: true,
             length: '100'
           },
+          {
+            name: 'website',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '200'
+          },
+          {
+            name: 'avatar',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '200'
+          },
+          {
+            name: 'background',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '200'
+          },
+          {
+            name: 'assentColor',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '200'
+          },
+          {
+            name: 'openStatus',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '200'
+          },
+          {
+            name: 'favorite',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '200'
+          },
+          {
+            name: 'description',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '200'
+          },
+
           { name: 'password', type: 'varchar', isNullable: true },
           { name: 'address', type: 'varchar', isNullable: true },
           { name: 'contact', type: 'varchar', isNullable: true },

@@ -76,47 +76,21 @@ const CustomerDetails = () => {
         <Container maxWidth="md">
           <div>
             <Box sx={{ mb: 4 }}>
-              <NextLink href="/dashboard/customers" passHref>
-                <Link
-                  color="textPrimary"
-                  component="a"
-                  sx={{
-                    alignItems: 'center',
-                    display: 'flex',
-                  }}
-                >
+              <NextLink href="/dashboard/restaurants" passHref>
+                <Link color="textPrimary" component="a" sx={{ alignItems: 'center', display: 'flex' }}>
                   <ArrowBackIcon fontSize="small" sx={{ mr: 1 }} />
-                  <Typography variant="subtitle2">Customers</Typography>
+                  <Typography variant="subtitle2">Restaurants</Typography>
                 </Link>
               </NextLink>
             </Box>
             <Grid container justifyContent="space-between" spacing={3}>
-              <Grid
-                item
-                sx={{
-                  alignItems: 'center',
-                  display: 'flex',
-                  overflow: 'hidden',
-                }}
-              >
-                <Avatar
-                  src={customer.avatar}
-                  sx={{
-                    height: 64,
-                    mr: 2,
-                    width: 64,
-                  }}
-                >
+              <Grid item sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden' }}>
+                <Avatar src={customer.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
                   {getInitials(customer.name)}
                 </Avatar>
                 <div>
                   <Typography variant="h4">{customer.email}</Typography>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                  >
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <Typography variant="subtitle2">user_id:</Typography>
                     <Chip label={customer.id} size="small" sx={{ ml: 1 }} />
                   </Box>

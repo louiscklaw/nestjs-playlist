@@ -16,7 +16,7 @@ import {
 import { customerApi } from '../../../__fake-api__/customer-api';
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
-import { CustomerListTable } from '../../../components/dashboard/customer/customer-list-table';
+import { RestaurantListTable } from '../../../components/dashboard/restaurant/restaurant-list-table';
 import { useMounted } from '../../../hooks/use-mounted';
 import { Download as DownloadIcon } from '../../../icons/download';
 import { Plus as PlusIcon } from '../../../icons/plus';
@@ -109,7 +109,7 @@ const applySort = (customers, sort) => {
 const applyPagination = (customers, page, rowsPerPage) =>
   customers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
-const CustomerList = () => {
+const RestaurantList = () => {
   const isMounted = useMounted();
   const queryRef = useRef(null);
   const [customers, setCustomers] = useState([]);
@@ -210,6 +210,7 @@ const CustomerList = () => {
               </Grid>
             </Grid>
           </Box>
+
           <Card>
             <Tabs
               indicatorColor="primary"
@@ -225,6 +226,7 @@ const CustomerList = () => {
               ))}
             </Tabs>
             <Divider />
+
             <Box
               sx={{
                 alignItems: 'center',
@@ -265,7 +267,8 @@ const CustomerList = () => {
                 ))}
               </TextField>
             </Box>
-            <CustomerListTable
+
+            <RestaurantListTable
               customers={paginatedCustomers}
               customersCount={filteredCustomers.length}
               onPageChange={handlePageChange}
@@ -280,10 +283,10 @@ const CustomerList = () => {
   );
 };
 
-CustomerList.getLayout = page => (
+RestaurantList.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 
-export default CustomerList;
+export default RestaurantList;

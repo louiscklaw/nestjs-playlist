@@ -1,6 +1,8 @@
 ### create new table
 
-entity
-seed
+  - `entity`
+  - `table`
+  - `seed`
+
 migration
 enum
