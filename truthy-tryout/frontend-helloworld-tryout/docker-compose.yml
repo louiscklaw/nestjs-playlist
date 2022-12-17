@@ -66,6 +66,19 @@ services:
     ports:
       - 6379:6379
 
+  pgweb:
+    # container_name: pgweb
+    restart: always
+    image: sosedoff/pgweb
+    ports:
+      - 6084:8081
+    links:
+      - postgres:postgres
+    environment:
+      - DATABASE_URL=postgres://postgres:root@postgres:5432/truthy?sslmode=disable
+    depends_on:
+      - postgres
+
   backend:
     build:
       # context: .
