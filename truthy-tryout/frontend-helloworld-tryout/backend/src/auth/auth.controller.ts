@@ -206,7 +206,6 @@ export class AuthController {
     return this.authService.findById(+id);
   }
 
-
   @Post('/logout')
   async logOut(
     @Req()
