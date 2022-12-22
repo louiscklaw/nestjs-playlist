@@ -195,6 +195,18 @@ class RestaurantApi {
     return Promise.resolve(restaurant);
   }
 
+  updateRestaurantsById({ id, restaurant_json }) {
+    console.debug({ getRestaurantById: { id } });
+    let restaurant = fetch(`//localhost:7777/restaurants/${id}`, {
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        hello: 'world',
+      }),
+    }).then(res => res.json());
+    return Promise.resolve(restaurant);
+  }
+
   getCustomers(request) {
     return Promise.resolve(customers);
   }

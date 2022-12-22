@@ -90,7 +90,7 @@ const RestaurantEdit = () => {
             </div>
           </Box>
           <Box mt={3}>
-            <RestaurantEditForm customer={restaurant} />
+            <RestaurantEditForm restaurant={restaurant} />
           </Box>
         </Container>
       </Box>

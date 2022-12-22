@@ -20,25 +20,28 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+
+import { Restaurant, restaurantApi } from '../../../api/restaurant-api';
+
 import { wait } from '../../../utils/wait';
 
 export const RestaurantEditForm = props => {
-  const { customer, ...other } = props;
+  const { restaurant, ...other } = props;
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      address1: customer.address1 || '',
-      address2: customer.address2 || '',
-      address3: customer.address3 || '',
-      country: customer.country || '',
-      email: customer.email || '',
-      hasDiscount: customer.hasDiscount || false,
-      isVerified: customer.isVerified || false,
-      name: customer.name || '',
-      phone: customer.phone || '',
-      state: customer.state || '',
+      address1: restaurant.address1 || '',
+      address2: restaurant.address2 || '',
+      address3: restaurant.address3 || '',
+      country: restaurant.country || '',
+      email: restaurant.email || '',
+      hasDiscount: restaurant.hasDiscount || false,
+      isVerified: restaurant.isVerified || false,
+      name: restaurant.name || '',
+      phone: restaurant.phone || '',
+      state: restaurant.state || '',
       submit: null,
-      openStatus: customer.openStatus || 'CLOSED',
+      openStatus: restaurant.openStatus || 'CLOSED',
     },
     validationSchema: Yup.object({
       address1: Yup.string().max(255),
@@ -54,11 +57,26 @@ export const RestaurantEditForm = props => {
     }),
     onSubmit: async (values, helpers) => {
       try {
+        restaurantApi.updateRestaurantsById(restaurant);
+
+        helpers.setStatus({ success: true });
+        helpers.setSubmitting(false);
+        toast.success('Restaurant updated!');
+      } catch (err) {
+        console.error(err);
+        toast.error('Something went wrong!');
+        helpers.setStatus({ success: false });
+        helpers.setErrors({ submit: err.message });
+        helpers.setSubmitting(false);
+      }
+    },
+    onSubmit1: async (values, helpers) => {
+      try {
         // NOTE: Make API request
         await wait(500);
         helpers.setStatus({ success: true });
         helpers.setSubmitting(false);
-        toast.success('Customer updated!');
+        toast.success('Restaurant updated!');
       } catch (err) {
         console.error(err);
         toast.error('Something went wrong!');
@@ -73,7 +91,7 @@ export const RestaurantEditForm = props => {
     <form onSubmit={formik.handleSubmit} {...other}>
       <pre>{JSON.stringify(formik.values, null, 2)}</pre>
       <Card>
-        <CardHeader title="Edit customer" />
+        <CardHeader title="Edit restaurant" />
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
