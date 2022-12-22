@@ -198,6 +198,7 @@ class RestaurantApi {
   updateRestaurantsById({ id, restaurant_json }) {
     console.debug({ getRestaurantById: { id } });
     let restaurant = fetch(`//localhost:7777/restaurants/${id}`, {
+      method: 'PATCH',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

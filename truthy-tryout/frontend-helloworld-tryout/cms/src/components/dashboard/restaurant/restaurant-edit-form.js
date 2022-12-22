@@ -24,9 +24,13 @@ import {
 import { Restaurant, restaurantApi } from '../../../api/restaurant-api';
 
 import { wait } from '../../../utils/wait';
+import { useRouter } from 'next/router';
 
 export const RestaurantEditForm = props => {
   const { restaurant, ...other } = props;
+  const router = useRouter();
+  const { restaurantId } = router.query;
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -57,7 +61,9 @@ export const RestaurantEditForm = props => {
     }),
     onSubmit: async (values, helpers) => {
       try {
-        restaurantApi.updateRestaurantsById(restaurant);
+        helpers.setSubmitting(true);
+
+        await restaurantApi.updateRestaurantsById({ id: restaurantId, restaurant_json: values });
 
         helpers.setStatus({ success: true });
         helpers.setSubmitting(false);
@@ -89,7 +95,6 @@ export const RestaurantEditForm = props => {
 
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
-      <pre>{JSON.stringify(formik.values, null, 2)}</pre>
       <Card>
         <CardHeader title="Edit restaurant" />
         <Divider />
