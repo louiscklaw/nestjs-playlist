@@ -3,11 +3,11 @@
  */
 export enum OpenStatusEnum {
   // shop is open
-  ON = 'on',
-
-  // shop closed
-  OFF = 'off',
+  OPEN = 'OPEN',
 
   // shop is not open again
-  CLOSED = 'closed'
+  CLOSED = 'CLOSED',
+
+  // shop closed
+  PERMANENTLY_CLOSED = 'PERMANENTLY_CLOSED'
 }

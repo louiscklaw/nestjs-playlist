@@ -8,6 +8,8 @@ import {
   ValidateIf
 } from 'class-validator';
 
+import { OpenStatusEnum } from '../open-status.enum';
+
 export class CreateRestaurantDto {
   @IsString()
   name: string;
@@ -56,4 +58,7 @@ export class CreateRestaurantDto {
 
   @IsNumber()
   totalAmountSpent: number;
+
+  @IsString()
+  openStatus: OpenStatusEnum;
 }

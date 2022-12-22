@@ -24,6 +24,7 @@ export const RestaurantEditForm = props => {
     initialValues: {
       address1: customer.address1 || '',
       address2: customer.address2 || '',
+      address3: customer.address3 || '',
       country: customer.country || '',
       email: customer.email || '',
       hasDiscount: customer.hasDiscount || false,
@@ -36,6 +37,7 @@ export const RestaurantEditForm = props => {
     validationSchema: Yup.object({
       address1: Yup.string().max(255),
       address2: Yup.string().max(255),
+      address3: Yup.string().max(255),
       country: Yup.string().max(255),
       email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
       hasDiscount: Yup.bool(),
@@ -142,6 +144,20 @@ export const RestaurantEditForm = props => {
                 value={formik.values.address2}
               />
             </Grid>
+
+            <Grid item md={6} xs={12}>
+              <TextField
+                error={Boolean(formik.touched.address3 && formik.errors.address3)}
+                fullWidth
+                helperText={formik.touched.address3 && formik.errors.address3}
+                label="Address 3"
+                name="address3"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.address3}
+              />
+            </Grid>
+
             <Grid item md={6} xs={12}>
               <TextField
                 error={Boolean(formik.touched.phone && formik.errors.phone)}

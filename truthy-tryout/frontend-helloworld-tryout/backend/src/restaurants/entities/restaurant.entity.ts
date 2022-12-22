@@ -12,7 +12,7 @@ import {
 // import * as bcrypt from 'bcrypt';
 // import { Exclude } from 'class-transformer';
 
-// import { OpenStatusEnum } from '../open-status.enum';
+import { OpenStatusEnum } from '../open-status.enum';
 import { CustomBaseEntity } from 'src/common/entity/custom-base.entity';
 // import { RoleEntity } from 'src/role/entities/role.entity';
 
@@ -66,4 +66,7 @@ export class RestaurantEntity extends CustomBaseEntity {
 
   @Column()
   totalAmountSpent: number;
+
+  @Column()
+  openStatus: OpenStatusEnum;
 }
