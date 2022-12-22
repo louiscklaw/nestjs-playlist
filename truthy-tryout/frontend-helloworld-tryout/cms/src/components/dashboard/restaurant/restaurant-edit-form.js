@@ -21,7 +21,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import { Restaurant, restaurantApi } from '../../../api/restaurant-api';
+import { restaurantApi } from '../../../api/restaurant-api';
 
 import { wait } from '../../../utils/wait';
 import { useRouter } from 'next/router';
@@ -68,6 +68,8 @@ export const RestaurantEditForm = props => {
         helpers.setStatus({ success: true });
         helpers.setSubmitting(false);
         toast.success('Restaurant updated!');
+
+        router.replace('/dashboard/restaurants');
       } catch (err) {
         console.error(err);
         toast.error('Something went wrong!');
@@ -83,6 +85,8 @@ export const RestaurantEditForm = props => {
         helpers.setStatus({ success: true });
         helpers.setSubmitting(false);
         toast.success('Restaurant updated!');
+
+        alert('helloworld');
       } catch (err) {
         console.error(err);
         toast.error('Something went wrong!');
