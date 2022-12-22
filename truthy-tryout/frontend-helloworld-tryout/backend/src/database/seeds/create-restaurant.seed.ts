@@ -37,6 +37,7 @@ export default class CreateRestaurantSeed {
               address1: `address_${i}_1`,
               address2: `address_${i}_2`,
               address3: `address_${i}_3`,
+              openStatus: OpenStatusEnum.OPEN,
               totalOrders: i,
               totalAmountSpent: parseFloat(`${i}.${i}`)
             };
