@@ -185,10 +185,14 @@ const restaurants = Array(99)
 class RestaurantApi {
   getRestaurants(request) {
     console.debug({ RestaurantApi: { request } });
-
     let restaurants = fetch('//localhost:7777/restaurants').then(res => res.json());
-
     return Promise.resolve(restaurants);
+  }
+
+  getRestaurantsById(id) {
+    console.debug({ getRestaurantById: { id } });
+    let restaurant = fetch(`//localhost:7777/restaurants/${id}`).then(res => res.json());
+    return Promise.resolve(restaurant);
   }
 
   getCustomers(request) {

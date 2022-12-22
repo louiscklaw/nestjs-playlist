@@ -15,19 +15,22 @@ export default class CreateRestaurantSeed {
       .insert()
       .into(RestaurantEntity)
       .values(
-        Array(3)
+        Array(19)
           .fill(0)
           .map((x, i) => {
-            if (i < 10) faker.locale = 'ja';
-            if (i > 10 && i < 20) faker.locale = 'en';
-            if (i > 20 && i < 30) faker.locale = 'zh_TW';
-            if (i > 30 && i < 40) faker.locale = 'zh_CN';
+            if (i < 4) faker.locale = 'ja';
+            if (i > 1 && i < 5) faker.locale = 'en';
+            if (i > 5 && i < 10) faker.locale = 'zh_TW';
+            if (i > 10 && i < 99) faker.locale = 'zh_CN';
             return {
               name: faker.company.companyName(),
               email: faker.internet.email(),
               description: `restaurant ${i} description`,
               website: 'https://www.openrice.com/',
               favorite: '1',
+              city: faker.address.city(),
+              state: faker.address.state(),
+              country: faker.address.country(),
               avatar: faker.image.avatar(),
               background: faker.image.cats(),
               assentColor: '#800000',

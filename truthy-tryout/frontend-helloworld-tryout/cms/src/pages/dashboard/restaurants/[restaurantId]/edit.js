@@ -4,16 +4,21 @@ import Head from 'next/head';
 import { Avatar, Box, Chip, Container, Link, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { customerApi } from '../../../../__fake-api__/customer-api';
+import { restaurantApi } from '../../../../api/restaurant-api';
 import { AuthGuard } from '../../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../../components/dashboard/dashboard-layout';
-import { CustomerEditForm } from '../../../../components/dashboard/customer/customer-edit-form';
+import { RestaurantEditForm } from '../../../../components/dashboard/restaurant/restaurant-edit-form';
 import { useMounted } from '../../../../hooks/use-mounted';
 import { gtm } from '../../../../lib/gtm';
 import { getInitials } from '../../../../utils/get-initials';
+import { useRouter } from 'next/router';
 
-const CustomerEdit = () => {
+const RestaurantEdit = () => {
+  const router = useRouter();
+  const { restaurantId } = router.query;
+
   const isMounted = useMounted();
-  const [customer, setCustomer] = useState(null);
+  const [restaurant, setRestaurant] = useState(null);
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
@@ -21,10 +26,12 @@ const CustomerEdit = () => {
 
   const getCustomer = useCallback(async () => {
     try {
-      const data = await customerApi.getCustomer();
+      const data = await restaurantApi.getRestaurantsById(restaurantId);
+      console.log({ data });
+      setRestaurant(data);
 
       if (isMounted()) {
-        setCustomer(data);
+        setRestaurant(data);
       }
     } catch (err) {
       console.error(err);
@@ -39,7 +46,7 @@ const CustomerEdit = () => {
     [],
   );
 
-  if (!customer) {
+  if (!restaurant) {
     return null;
   }
 
@@ -48,50 +55,24 @@ const CustomerEdit = () => {
       <Head>
         <title>Dashboard: Customer Edit | Material Kit Pro</title>
       </Head>
-      <Box
-        component="main"
-        sx={{
-          backgroundColor: 'background.default',
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
+      <pre>{JSON.stringify(restaurant, null, 2)}</pre>
+      <Box component="main" sx={{ backgroundColor: 'background.default', flexGrow: 1, py: 8 }}>
         <Container maxWidth="md">
           <Box sx={{ mb: 4 }}>
-            <NextLink href="/dashboard/customers" passHref>
-              <Link
-                color="textPrimary"
-                component="a"
-                sx={{
-                  alignItems: 'center',
-                  display: 'flex',
-                }}
-              >
+            <NextLink href="/dashboard/restaurants" passHref>
+              <Link color="textPrimary" component="a" sx={{ alignItems: 'center', display: 'flex' }}>
                 <ArrowBackIcon fontSize="small" sx={{ mr: 1 }} />
-                <Typography variant="subtitle2">Customers</Typography>
+                <Typography variant="subtitle2">Restaurants</Typography>
               </Link>
             </NextLink>
           </Box>
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              overflow: 'hidden',
-            }}
-          >
-            <Avatar
-              src={customer.avatar}
-              sx={{
-                height: 64,
-                mr: 2,
-                width: 64,
-              }}
-            >
-              {getInitials(customer.name)}
+          <Box sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden' }}>
+            <Avatar src={restaurant.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
+              {getInitials(restaurant.name)}
             </Avatar>
             <div>
               <Typography noWrap variant="h4">
-                {customer.email}
+                {restaurant.email}
               </Typography>
               <Box
                 sx={{
@@ -103,12 +84,12 @@ const CustomerEdit = () => {
                 }}
               >
                 <Typography variant="subtitle2">user_id:</Typography>
-                <Chip label={customer.id} size="small" sx={{ ml: 1 }} />
+                <Chip label={restaurant.id} size="small" sx={{ ml: 1 }} />
               </Box>
             </div>
           </Box>
           <Box mt={3}>
-            <CustomerEditForm customer={customer} />
+            <RestaurantEditForm customer={restaurant} />
           </Box>
         </Container>
       </Box>
@@ -116,10 +97,10 @@ const CustomerEdit = () => {
   );
 };
 
-CustomerEdit.getLayout = page => (
+RestaurantEdit.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 
-export default CustomerEdit;
+export default RestaurantEdit;

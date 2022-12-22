@@ -6,9 +6,9 @@ docker compose kill
 docker compose down
 
 docker container prune -f
-docker system prune -f
-docker image prune -f
-docker volume prune -f
+# docker system prune -f
+# docker image prune -f
+# docker volume prune -f
 docker network prune -f
 
 sudo rm -rf volumes/redis/data/dump.rdb

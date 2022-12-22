@@ -114,7 +114,7 @@ export const RestaurantListTable = props => {
                         {getInitials(customer.name)}
                       </Avatar>
                       <Box sx={{ ml: 1 }}>
-                        <NextLink href="/dashboard/customers/1" passHref>
+                        <NextLink href="/dashboard/restaurants/1" passHref>
                           <Link color="inherit" variant="subtitle2">
                             {customer.name}
                           </Link>

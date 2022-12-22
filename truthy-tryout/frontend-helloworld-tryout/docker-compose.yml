@@ -15,7 +15,8 @@ services:
       - ./cms:/usr/src/app
       - cms_node_modules:/usr/src/app/node_modules
     working_dir: /usr/src/app
-    command: sleep infinity
+    # command: sleep infinity
+    command: ./entry.sh
     ports:
       - 3000:3000
 
@@ -99,6 +100,7 @@ services:
       - redis
       - minio
     command: sleep infinity
+    # command: ./entry.sh
 
 # networks:
 #   webnet:

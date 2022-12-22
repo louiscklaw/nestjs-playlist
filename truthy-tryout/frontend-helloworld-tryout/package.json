@@ -8,6 +8,8 @@
     "docker_rebuild": "docker compose up -d --build",
     "into_cms": "docker compose exec -it cms bash",
     "into_backend": "docker compose exec -it backend bash",
+    "log_cms": "docker compose logs -f cms",
+    "log_backend": "docker compose logs -f backend",
     "into_redis": "docker compose exec -it redis bash",
     "into_pgsql": "docker compose exec -it postgres bash",
     "rebuild_pgsql": "docker compose kill postgres && docker compose stop postgres && rm -rf ./volumes/postgres/data && docker compose up -d",

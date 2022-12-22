@@ -35,6 +35,15 @@ export class RestaurantEntity extends CustomBaseEntity {
   favorite: string;
 
   @Column()
+  city: string;
+
+  @Column()
+  state: string;
+
+  @Column()
+  country: string;
+
+  @Column()
   avatar: string;
 
   @Column()

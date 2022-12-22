@@ -28,6 +28,15 @@ export class CreateRestaurantDto {
   avatar: string;
 
   @IsString()
+  city: string;
+
+  @IsString()
+  state: string;
+
+  @IsString()
+  country: string;
+
+  @IsString()
   background: string;
 
   @IsString()

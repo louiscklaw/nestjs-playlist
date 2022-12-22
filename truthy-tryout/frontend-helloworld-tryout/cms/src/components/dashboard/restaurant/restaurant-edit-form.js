@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 import { wait } from '../../../utils/wait';
 
-export const CustomerEditForm = props => {
+export const RestaurantEditForm = props => {
   const { customer, ...other } = props;
   const formik = useFormik({
     initialValues: {
@@ -237,6 +237,6 @@ export const CustomerEditForm = props => {
   );
 };
 
-CustomerEditForm.propTypes = {
+RestaurantEditForm.propTypes = {
   customer: PropTypes.object.isRequired,
 };
