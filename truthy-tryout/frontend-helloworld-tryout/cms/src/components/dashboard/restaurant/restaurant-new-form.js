@@ -292,6 +292,8 @@ export const RestaurantNewForm = props => {
 
           <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}></Box>
         </CardContent>
+        <Divider sx={{ my: 3 }} />
+
         <CardActions sx={{ flexWrap: 'wrap', m: -1 }}>
           <Button
             onClick={handleClose}
