@@ -150,6 +150,7 @@ export class RestaurantTable1614275816426 implements MigrationInterface {
           { name: 'contact', type: 'varchar', isNullable: true },
           { name: 'salt', type: 'varchar', isNullable: true },
           { name: 'token', type: 'varchar', isNullable: true },
+          { name: 'hasDiscount', type: 'varchar', isNullable: true },
           { name: 'isVerified', type: 'varchar', isNullable: true },
           { name: 'phone', type: 'varchar', isNullable: true },
           { name: 'status', type: 'varchar', default: `'active'` }

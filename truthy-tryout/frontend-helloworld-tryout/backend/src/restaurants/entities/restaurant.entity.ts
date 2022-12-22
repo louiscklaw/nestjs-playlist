@@ -69,4 +69,10 @@ export class RestaurantEntity extends CustomBaseEntity {
 
   @Column()
   openStatus: OpenStatusEnum;
+
+  @Column()
+  hasDiscount: boolean;
+
+  @Column()
+  isVerified: boolean;
 }

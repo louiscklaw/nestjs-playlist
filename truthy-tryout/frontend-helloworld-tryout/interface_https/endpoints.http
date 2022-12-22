@@ -43,7 +43,9 @@ content-type: application/json
   "totalOrders": 1,
   "totalAmountSpent": 1.1,
   "openStatus": "CLOSE",
-  "favorite": "CLOSE"
+  "favorite": "CLOSE",
+  "hasDiscount":false,
+  "isVerified":false
 }
 
 ###

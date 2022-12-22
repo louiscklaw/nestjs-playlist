@@ -1,4 +1,5 @@
 import {
+  IsBoolean,
   IsNotEmpty,
   IsNumber,
   IsString,
@@ -56,4 +57,10 @@ export class CreateRestaurantDto {
 
   @IsString()
   openStatus: OpenStatusEnum;
+
+  @IsBoolean()
+  hasDiscount: boolean;
+
+  @IsBoolean()
+  isVerified: boolean;
 }
