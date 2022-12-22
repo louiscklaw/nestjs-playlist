@@ -23,36 +23,45 @@ import { getInitials } from '../../../utils/get-initials';
 import { Scrollbar } from '../../scrollbar';
 
 export const RestaurantListTable = props => {
-  const { restaurants, customers, customersCount, onPageChange, onRowsPerPageChange, page, rowsPerPage, ...other } =
-    props;
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const {
+    restaurants,
+    restaurantsCount,
+    customers,
+    customersCount,
+    onPageChange,
+    onRowsPerPageChange,
+    page,
+    rowsPerPage,
+    ...other
+  } = props;
+  const [selectedRestaurants, setSelectedRestaurants] = useState([]);
 
   // Reset selected customers when customers change
   useEffect(
     () => {
-      if (selectedCustomers.length) {
-        setSelectedCustomers([]);
+      if (selectedRestaurants.length) {
+        setSelectedRestaurants([]);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [customers],
+    [restaurants],
   );
 
   const handleSelectAllCustomers = event => {
-    setSelectedCustomers(event.target.checked ? customers.map(customer => customer.id) : []);
+    setSelectedRestaurants(event.target.checked ? restaurants.map(restaurant => restaurant.id) : []);
   };
 
-  const handleSelectOneCustomer = (event, customerId) => {
-    if (!selectedCustomers.includes(customerId)) {
-      setSelectedCustomers(prevSelected => [...prevSelected, customerId]);
+  const handleSelectOneCustomer = (event, restaurantId) => {
+    if (!selectedRestaurants.includes(restaurantId)) {
+      setSelectedRestaurants(prevSelected => [...prevSelected, restaurantId]);
     } else {
-      setSelectedCustomers(prevSelected => prevSelected.filter(id => id !== customerId));
+      setSelectedRestaurants(prevSelected => prevSelected.filter(id => id !== restaurantId));
     }
   };
 
-  const enableBulkActions = selectedCustomers.length > 0;
-  const selectedSomeCustomers = selectedCustomers.length > 0 && selectedCustomers.length < customers.length;
-  const selectedAllCustomers = selectedCustomers.length === customers.length;
+  const enableBulkActions = selectedRestaurants.length > 0;
+  const selectedSomeCustomers = selectedRestaurants.length > 0 && selectedRestaurants.length < restaurants.length;
+  const selectedAllCustomers = selectedRestaurants.length === restaurants.length;
 
   return (
     <div {...other}>
@@ -96,16 +105,16 @@ export const RestaurantListTable = props => {
           </TableHead>
 
           <TableBody>
-            {customers.map(restaurant => {
-              const isCustomerSelected = selectedCustomers.includes(restaurant.id);
+            {restaurants.map(restaurant => {
+              const isRestaurantSelected = selectedRestaurants.includes(restaurant.id);
 
               return (
-                <TableRow hover key={restaurant.id} selected={isCustomerSelected}>
+                <TableRow hover key={restaurant.id} selected={isRestaurantSelected}>
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={isCustomerSelected}
+                      checked={isRestaurantSelected}
                       onChange={event => handleSelectOneCustomer(event, restaurant.id)}
-                      value={isCustomerSelected}
+                      value={isRestaurantSelected}
                     />
                   </TableCell>
                   <TableCell>

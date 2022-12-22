@@ -264,6 +264,8 @@ const RestaurantList = () => {
             </Box>
 
             <RestaurantListTable
+              restaurants={paginatedCustomers}
+              restaurantsCount={filteredCustomers.length}
               customers={paginatedCustomers}
               customersCount={filteredCustomers.length}
               onPageChange={handlePageChange}
