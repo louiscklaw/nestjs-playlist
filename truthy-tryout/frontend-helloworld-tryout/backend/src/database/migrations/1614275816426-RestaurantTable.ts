@@ -105,6 +105,27 @@ export class RestaurantTable1614275816426 implements MigrationInterface {
             length: '200'
           },
           {
+            name: 'address1',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '200'
+          },
+          {
+            name: 'address2',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '200'
+          },
+          {
+            name: 'address3',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '200'
+          },
+          {
             name: 'country',
             type: 'varchar',
             isNullable: true,
@@ -129,8 +150,6 @@ export class RestaurantTable1614275816426 implements MigrationInterface {
           { name: 'contact', type: 'varchar', isNullable: true },
           { name: 'salt', type: 'varchar', isNullable: true },
           { name: 'token', type: 'varchar', isNullable: true },
-          { name: 'address1', type: 'varchar', isNullable: true },
-          { name: 'address2', type: 'varchar', isNullable: true },
           { name: 'isVerified', type: 'varchar', isNullable: true },
           { name: 'phone', type: 'varchar', isNullable: true },
           { name: 'status', type: 'varchar', default: `'active'` }

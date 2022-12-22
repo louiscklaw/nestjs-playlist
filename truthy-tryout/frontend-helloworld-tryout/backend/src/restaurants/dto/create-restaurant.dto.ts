@@ -34,6 +34,15 @@ export class CreateRestaurantDto {
   state: string;
 
   @IsString()
+  address1: string;
+
+  @IsString()
+  address2: string;
+
+  @IsString()
+  address3: string;
+
+  @IsString()
   country: string;
 
   @IsString()

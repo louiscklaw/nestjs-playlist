@@ -41,6 +41,15 @@ export class RestaurantEntity extends CustomBaseEntity {
   state: string;
 
   @Column()
+  address1: string;
+
+  @Column()
+  address2: string;
+
+  @Column()
+  address3: string;
+
+  @Column()
   country: string;
 
   @Column()
