@@ -24,6 +24,7 @@ import { Plus as PlusIcon } from '../../../icons/plus';
 import { Search as SearchIcon } from '../../../icons/search';
 import { Upload as UploadIcon } from '../../../icons/upload';
 import { gtm } from '../../../lib/gtm';
+import AddNewRestaurantDialog from './AddNewRestaurantDialog';
 
 const tabs = [
   { label: 'All', value: 'all' },
@@ -187,6 +188,15 @@ const RestaurantList = () => {
     setRowsPerPage(parseInt(event.target.value, 10));
   };
 
+  // add new restaurant
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   // Usually query is done on backend with indexing solutions
   const filteredCustomers = applyFilters(restaurants, filters);
   const sortedCustomers = applySort(filteredCustomers, sort);
@@ -194,6 +204,7 @@ const RestaurantList = () => {
 
   return (
     <>
+      <AddNewRestaurantDialog open={open} handleClose={handleClose} />
       <Head>
         <title>Dashboard: Customer List | Material Kit Pro</title>
       </Head>
@@ -207,7 +218,7 @@ const RestaurantList = () => {
               <Grid item>
                 <Button startIcon={<UploadIcon fontSize="small" />}>Import</Button>
                 <Button startIcon={<DownloadIcon fontSize="small" />}>Export</Button>
-                <Button startIcon={<PlusIcon fontSize="small" />} variant="contained">
+                <Button startIcon={<PlusIcon fontSize="small" />} variant="contained" onClick={handleClickOpen}>
                   Add
                 </Button>
               </Grid>
