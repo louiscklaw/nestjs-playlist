@@ -12,6 +12,7 @@ export class RestaurantTable1614275816426 implements MigrationInterface {
   tableName = 'restaurant';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
+
     await queryRunner.createTable(
       new Table({
         name: this.tableName,
@@ -88,6 +89,18 @@ export class RestaurantTable1614275816426 implements MigrationInterface {
             isNullable: true,
             isUnique: false,
             length: '200'
+          },
+          {
+            name: 'totalOrders',
+            type: 'integer',
+            isNullable: true,
+            isUnique: false
+          },
+          {
+            name: 'totalAmountSpent',
+            type: 'float',
+            isNullable: true,
+            isUnique: false
           },
 
           { name: 'password', type: 'varchar', isNullable: true },

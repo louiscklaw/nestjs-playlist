@@ -14,6 +14,7 @@ import {
   Typography,
 } from '@mui/material';
 import { customerApi } from '../../../__fake-api__/customer-api';
+import { restaurantApi } from '../../../api/restaurant-api';
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
 import { RestaurantListTable } from '../../../components/dashboard/restaurant/restaurant-list-table';
@@ -112,7 +113,7 @@ const applyPagination = (customers, page, rowsPerPage) =>
 const RestaurantList = () => {
   const isMounted = useMounted();
   const queryRef = useRef(null);
-  const [customers, setCustomers] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
   const [currentTab, setCurrentTab] = useState('all');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -128,12 +129,14 @@ const RestaurantList = () => {
     gtm.push({ event: 'page_view' });
   }, []);
 
-  const getCustomers = useCallback(async () => {
+  const getRestaurants = useCallback(async () => {
     try {
-      const data = await customerApi.getCustomers();
+      const data = await restaurantApi.getRestaurants();
+
+      console.log(data);
 
       if (isMounted()) {
-        setCustomers(data);
+        setRestaurants(data);
       }
     } catch (err) {
       console.error(err);
@@ -142,7 +145,7 @@ const RestaurantList = () => {
 
   useEffect(
     () => {
-      getCustomers();
+      getRestaurants();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
@@ -185,7 +188,7 @@ const RestaurantList = () => {
   };
 
   // Usually query is done on backend with indexing solutions
-  const filteredCustomers = applyFilters(customers, filters);
+  const filteredCustomers = applyFilters(restaurants, filters);
   const sortedCustomers = applySort(filteredCustomers, sort);
   const paginatedCustomers = applyPagination(sortedCustomers, page, rowsPerPage);
 
@@ -227,15 +230,7 @@ const RestaurantList = () => {
             </Tabs>
             <Divider />
 
-            <Box
-              sx={{
-                alignItems: 'center',
-                display: 'flex',
-                flexWrap: 'wrap',
-                m: -1.5,
-                p: 3,
-              }}
-            >
+            <Box sx={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap', m: -1.5, p: 3 }}>
               <Box component="form" onSubmit={handleQueryChange} sx={{ flexGrow: 1, m: 1.5 }}>
                 <TextField
                   defaultValue=""

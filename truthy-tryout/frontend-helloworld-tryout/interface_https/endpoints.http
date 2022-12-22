@@ -35,7 +35,9 @@ content-type: application/json
   "favorite": "1",
   "avatar":  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
   "background":  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
-  "assentColor":  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+  "assentColor":  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
+                "orders": 1,
+              "spent": 1.1
 }
 
 ###

@@ -18,7 +18,6 @@ import { CustomBaseEntity } from 'src/common/entity/custom-base.entity';
 
 @Entity({ name: 'restaurant' })
 export class RestaurantEntity extends CustomBaseEntity {
-  @Index({ unique: true })
   @Column()
   name: string;
 
@@ -26,27 +25,27 @@ export class RestaurantEntity extends CustomBaseEntity {
   @Column()
   email: string;
 
-  @Index({ unique: true })
   @Column()
   description: string;
 
-  @Index({ unique: true })
   @Column()
   website: string;
 
-  @Index({ unique: true })
   @Column()
   favorite: string;
 
-  @Index({ unique: true })
   @Column()
   avatar: string;
 
-  @Index({ unique: true })
   @Column()
   background: string;
 
-  @Index({ unique: true })
   @Column()
   assentColor: string;
+
+  @Column()
+  totalOrders: number;
+
+  @Column()
+  totalAmountSpent: number;
 }

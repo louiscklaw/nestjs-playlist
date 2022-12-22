@@ -87,13 +87,14 @@ export const RestaurantListTable = props => {
                   onChange={handleSelectAllCustomers}
                 />
               </TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Location</TableCell>
+              <TableCell>Restaurant Name</TableCell>
+              <TableCell>Address</TableCell>
               <TableCell>Orders</TableCell>
               <TableCell>Spent</TableCell>
               <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody>
             {customers.map(customer => {
               const isCustomerSelected = selectedCustomers.includes(customer.id);

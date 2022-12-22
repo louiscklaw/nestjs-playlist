@@ -277,7 +277,6 @@ const RoleList = () => {
                 ))}
               </TextField>
             </Box>
-            <pre>{JSON.stringify(roles)}</pre>
 
             <RoleListTable
               roles={roles}

@@ -32,4 +32,10 @@ export class CreateRestaurantDto {
 
   @IsString()
   assentColor: string;
+
+  @IsNumber()
+  totalOrders: number;
+
+  @IsNumber()
+  totalAmountSpent: number;
 }
