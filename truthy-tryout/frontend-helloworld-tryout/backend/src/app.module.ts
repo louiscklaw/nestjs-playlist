@@ -29,6 +29,7 @@ import { TwofaModule } from 'src/twofa/twofa.module';
 import { CustomThrottlerGuard } from 'src/common/guard/custom-throttle.guard';
 import { DashboardModule } from 'src/dashboard/dashboard.module';
 import { AppController } from 'src/app.controller';
+import { RestaurantsModule } from './restaurants/restaurants.module';
 import winstonConfig from 'src/config/winston';
 
 const appConfig = config.get('app');
@@ -71,7 +72,8 @@ const appConfig = config.get('app');
     EmailTemplateModule,
     RefreshTokenModule,
     TwofaModule,
-    DashboardModule
+    DashboardModule,
+    RestaurantsModule
   ],
   providers: [
     {

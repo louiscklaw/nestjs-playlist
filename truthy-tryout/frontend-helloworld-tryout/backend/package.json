@@ -31,7 +31,8 @@
     "prepush": "npm run test:unit && npm run test:e2e",
     "prepare": "husky install",
     "docker_rebuild": "docker compose up -d",
-    "into_backend": "docker compose exec -it main bash"
+    "into_backend": "docker compose exec -it main bash",
+    "nest_resource": "nest g resource"
   },
   "dependencies": {
     "@aws-sdk/client-cloudwatch-logs": "^3.54.1",

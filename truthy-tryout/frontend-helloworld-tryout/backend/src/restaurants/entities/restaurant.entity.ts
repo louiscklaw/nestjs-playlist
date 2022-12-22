@@ -8,10 +8,11 @@ import {
   JoinColumn,
   OneToOne
 } from 'typeorm';
-import * as bcrypt from 'bcrypt';
-import { Exclude } from 'class-transformer';
 
-import { OpenStatusEnum } from 'src/restaurant/open-status.enum';
+// import * as bcrypt from 'bcrypt';
+// import { Exclude } from 'class-transformer';
+
+// import { OpenStatusEnum } from '../open-status.enum';
 import { CustomBaseEntity } from 'src/common/entity/custom-base.entity';
 // import { RoleEntity } from 'src/role/entities/role.entity';
 
@@ -25,24 +26,27 @@ export class RestaurantEntity extends CustomBaseEntity {
   @Column()
   email: string;
 
+  @Index({ unique: true })
   @Column()
   description: string;
 
+  @Index({ unique: true })
   @Column()
   website: string;
 
-  @Column()
-  openStatus: OpenStatusEnum;
-
+  @Index({ unique: true })
   @Column()
   favorite: string;
 
+  @Index({ unique: true })
   @Column()
   avatar: string;
 
+  @Index({ unique: true })
   @Column()
   background: string;
 
+  @Index({ unique: true })
   @Column()
   assentColor: string;
 }

@@ -23,6 +23,9 @@ export class RestaurantTable1614275816426 implements MigrationInterface {
             isGenerated: true,
             generationStrategy: 'increment'
           },
+
+          { name: 'createdAt', type: 'timestamp', default: 'now()' },
+          { name: 'updatedAt', type: 'timestamp', default: 'now()' },
           {
             name: 'name',
             type: 'varchar',
@@ -98,9 +101,7 @@ export class RestaurantTable1614275816426 implements MigrationInterface {
           { name: 'isVerified', type: 'varchar', isNullable: true },
           { name: 'phone', type: 'varchar', isNullable: true },
           { name: 'state', type: 'varchar', isNullable: true },
-          { name: 'status', type: 'varchar', default: `'active'` },
-          { name: 'createdAt', type: 'timestamp', default: 'now()' },
-          { name: 'updatedAt', type: 'timestamp', default: 'now()' }
+          { name: 'status', type: 'varchar', default: `'active'` }
         ]
       }),
       false

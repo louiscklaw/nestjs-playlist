@@ -24,6 +24,30 @@ Get http://localhost:7777/auth/profile
 Get http://localhost:7777/auth/token-info
 
 ###
+Post http://localhost:7777/restaurants
+content-type: application/json
+
+{
+  "name": "大盛日本料理_4",
+  "email": "admin_5@truthy.com",
+  "description": "restaurant 1 description",
+  "website": "https://www.openrice.com/",
+  "favorite": "1",
+  "avatar":  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
+  "background":  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
+  "assentColor":  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+}
+
+###
+Get http://localhost:7777/restaurants
+
+###
+Get http://localhost:7777/restaurants/1
+
+###
+Delete http://localhost:7777/restaurants/1
+
+###
 Get http://localhost:7777/users
 
 ###

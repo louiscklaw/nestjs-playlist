@@ -93,6 +93,16 @@ const getSections = t => [
         ],
       },
       {
+        title: t('Resources'),
+        path: '/dashboard/resources',
+        icon: <UsersIcon fontSize="small" />,
+        children: [
+          { title: t('List'), path: '/dashboard/resources' },
+          { title: t('Details'), path: '/dashboard/resources/1' },
+          { title: t('Edit'), path: '/dashboard/resources/1/edit' },
+        ],
+      },
+      {
         title: t('Users'),
         path: '/dashboard/users',
         icon: <UsersIcon fontSize="small" />,
