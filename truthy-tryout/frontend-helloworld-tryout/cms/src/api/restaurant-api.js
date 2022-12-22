@@ -190,7 +190,7 @@ class RestaurantApi {
   }
 
   getRestaurantsById(id) {
-    console.debug({ getRestaurantById: { id } });
+    console.debug({ getRestaurantsById: { id } });
     let restaurant = fetch(`//localhost:7777/restaurants/${id}`).then(res => res.json());
     return Promise.resolve(restaurant);
   }
