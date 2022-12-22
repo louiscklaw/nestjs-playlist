@@ -183,13 +183,15 @@ const restaurants = Array(99)
   });
 
 class RestaurantApi {
-  addRestaurant(restaurant_json) {
+  addRestaurant({ restaurant_json }) {
     let restaurant = fetch(`//localhost:7777/restaurants/`, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(restaurant_json),
-    }).then(res => res.json());
+    })
+      .then(res => res.json())
+      .catch(err => console.error(err));
 
     return Promise.resolve(restaurants);
   }

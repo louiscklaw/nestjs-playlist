@@ -112,27 +112,8 @@ export const RestaurantNewForm = props => {
     },
   });
 
-  const helloworld = async () => {
-    await restaurantApi.addRestaurant({
-      restaurant_json: {
-        name: '大盛日本料理_4',
-        email: 'admin_5@truthy.com',
-        description: 'restaurant 1 description',
-        website: 'https://www.openrice.com/',
-        favorite: '1',
-        avatar: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
-        background: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
-        assentColor: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
-        address1: 'address1',
-        address2: 'address2',
-        address3: 'address3',
-      },
-    });
-  };
-
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
-      <button onClick={helloworld}>helloworld</button>
       <Card>
         <CardHeader title="Add New restaurant" />
         <Divider />
