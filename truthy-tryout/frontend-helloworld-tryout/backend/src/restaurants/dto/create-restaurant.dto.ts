@@ -24,23 +24,18 @@ export class CreateRestaurantDto {
   website: string;
 
   @IsString()
-  favorite: string;
-
-  @IsString()
   avatar: string;
 
   @IsString()
   city: string;
 
   @IsString()
-  state: string;
+  favorite: string;
 
   @IsString()
   address1: string;
-
   @IsString()
   address2: string;
-
   @IsString()
   address3: string;
 

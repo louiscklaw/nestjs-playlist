@@ -17,7 +17,7 @@ export class RestaurantsService {
   create(createRestaurantDto: CreateRestaurantDto): Promise<RestaurantEntity> {
     const restaurant = new RestaurantEntity();
     restaurant.name = createRestaurantDto.name;
-    restaurant.email = createRestaurantDto.email;
+    // restaurant.email = createRestaurantDto.email;
 
     return this.restaurantsRepository.save(createRestaurantDto);
   }

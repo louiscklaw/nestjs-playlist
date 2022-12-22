@@ -15,14 +15,13 @@ import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 export class RestaurantsController {
   constructor(private readonly restaurantsService: RestaurantsService) {}
 
-  @Post('/')
+  @Post()
   create(@Body() createRestaurantDto: CreateRestaurantDto) {
     return this.restaurantsService.create(createRestaurantDto);
   }
 
   @Get()
   findAll() {
-    console.log('hello findall');
     return this.restaurantsService.findAll();
   }
 

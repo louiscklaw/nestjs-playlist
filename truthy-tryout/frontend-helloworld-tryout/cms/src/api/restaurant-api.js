@@ -183,6 +183,17 @@ const restaurants = Array(99)
   });
 
 class RestaurantApi {
+  addRestaurant(restaurant_json) {
+    let restaurant = fetch(`//localhost:7777/restaurants/`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(restaurant_json),
+    }).then(res => res.json());
+
+    return Promise.resolve(restaurants);
+  }
+
   getRestaurants(request) {
     console.debug({ RestaurantApi: { request } });
     let restaurants = fetch('//localhost:7777/restaurants').then(res => res.json());
@@ -201,9 +212,7 @@ class RestaurantApi {
       method: 'PATCH',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        hello: 'world',
-      }),
+      body: JSON.stringify(restaurant_json),
     }).then(res => res.json());
     return Promise.resolve(restaurant);
   }

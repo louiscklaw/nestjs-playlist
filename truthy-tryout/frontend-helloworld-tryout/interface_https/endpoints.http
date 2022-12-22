@@ -28,16 +28,22 @@ Post http://localhost:7777/restaurants
 content-type: application/json
 
 {
-  "name": "大盛日本料理_4",
-  "email": "admin_5@truthy.com",
-  "description": "restaurant 1 description",
-  "website": "https://www.openrice.com/",
-  "favorite": "1",
-  "avatar":  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
-  "background":  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
-  "assentColor":  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
-                "orders": 1,
-              "spent": 1.1
+  "name": "faker.company.companyName()",
+  "email": "faker.internet.email()",
+  "description": "`restaurant ${i} description`",
+  "website": "`restaurant ${i} description`",
+  "avatar": "`restaurant ${i} description`",
+  "city": "`restaurant ${i} description`",
+  "address1": "`restaurant ${i} description`",
+  "address2": "`restaurant ${i} description`",
+  "address3": "`restaurant ${i} description`",
+  "country": "`restaurant ${i} description`",
+  "background": "`restaurant ${i} description`",
+  "assentColor": "`restaurant ${i} description`",
+  "totalOrders": 1,
+  "totalAmountSpent": 1.1,
+  "openStatus": "CLOSE",
+  "favorite": "CLOSE"
 }
 
 ###
