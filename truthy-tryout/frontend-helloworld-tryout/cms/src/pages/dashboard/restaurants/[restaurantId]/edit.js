@@ -55,7 +55,7 @@ const RestaurantEdit = () => {
       <Head>
         <title>Dashboard: Customer Edit | Material Kit Pro</title>
       </Head>
-      <pre>{JSON.stringify(restaurant, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(restaurant, null, 2)}</pre> */}
       <Box component="main" sx={{ backgroundColor: 'background.default', flexGrow: 1, py: 8 }}>
         <Container maxWidth="md">
           <Box sx={{ mb: 4 }}>

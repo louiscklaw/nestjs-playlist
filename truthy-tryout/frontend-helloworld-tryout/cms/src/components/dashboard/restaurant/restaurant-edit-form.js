@@ -11,7 +11,11 @@ import {
   CardContent,
   CardHeader,
   Divider,
+  FormControl,
   Grid,
+  InputLabel,
+  MenuItem,
+  Select,
   Switch,
   TextField,
   Typography,
@@ -196,14 +200,9 @@ export const RestaurantEditForm = props => {
               value={formik.values.isVerified}
             />
           </Box>
+
           <Divider sx={{ my: 3 }} />
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
+          <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
             <div>
               <Typography gutterBottom variant="subtitle1">
                 Available to hire
@@ -221,6 +220,32 @@ export const RestaurantEditForm = props => {
               value={formik.values.hasDiscount}
             />
           </Box>
+
+          <Divider sx={{ my: 3 }} />
+          <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
+            <div>
+              <Typography gutterBottom variant="subtitle1">
+                Open status
+              </Typography>
+              <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
+                Open, Close, Permanently Closed
+              </Typography>
+            </div>
+            <FormControl fullWidth>
+              <InputLabel id="open-status-select-label">OpenStatus</InputLabel>
+              <Select
+                labelId="open-status-select-label"
+                id="open-status-select"
+                value={formik.values.OpenStatus}
+                label="OpenStatus"
+                onChange={formik.handleChange}
+              >
+                <MenuItem value={'OPENED'}>Opened</MenuItem>
+                <MenuItem value={'CLOSED'}>Closed</MenuItem>
+                <MenuItem value={'PERMANENTLY_CLOSED'}>Permanently Closed</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
         </CardContent>
         <CardActions
           sx={{
@@ -231,16 +256,8 @@ export const RestaurantEditForm = props => {
           <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained">
             Update
           </Button>
-          <NextLink href="/dashboard/customers/1" passHref>
-            <Button
-              component="a"
-              disabled={formik.isSubmitting}
-              sx={{
-                m: 1,
-                mr: 'auto',
-              }}
-              variant="outlined"
-            >
+          <NextLink href="/dashboard/restaurants/1" passHref>
+            <Button component="a" disabled={formik.isSubmitting} sx={{ m: 1, mr: 'auto' }} variant="outlined">
               Cancel
             </Button>
           </NextLink>
