@@ -25,6 +25,7 @@ import { wait } from '../../../utils/wait';
 export const RestaurantEditForm = props => {
   const { customer, ...other } = props;
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
       address1: customer.address1 || '',
       address2: customer.address2 || '',
@@ -37,6 +38,7 @@ export const RestaurantEditForm = props => {
       phone: customer.phone || '',
       state: customer.state || '',
       submit: null,
+      openStatus: customer.openStatus || 'CLOSED',
     },
     validationSchema: Yup.object({
       address1: Yup.string().max(255),
@@ -69,6 +71,7 @@ export const RestaurantEditForm = props => {
 
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
+      <pre>{JSON.stringify(formik.values, null, 2)}</pre>
       <Card>
         <CardHeader title="Edit customer" />
         <Divider />
@@ -175,14 +178,7 @@ export const RestaurantEditForm = props => {
               />
             </Grid>
           </Grid>
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'space-between',
-              mt: 3,
-            }}
-          >
+          <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', mt: 3 }}>
             <div>
               <Typography gutterBottom variant="subtitle1">
                 Make Contact Info Public
@@ -222,37 +218,39 @@ export const RestaurantEditForm = props => {
           </Box>
 
           <Divider sx={{ my: 3 }} />
-          <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
-            <div>
-              <Typography gutterBottom variant="subtitle1">
-                Open status
-              </Typography>
-              <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
-                Open, Close, Permanently Closed
-              </Typography>
-            </div>
-            <FormControl fullWidth>
-              <InputLabel id="open-status-select-label">OpenStatus</InputLabel>
-              <Select
-                labelId="open-status-select-label"
-                id="open-status-select"
-                value={formik.values.OpenStatus}
-                label="OpenStatus"
-                onChange={formik.handleChange}
-              >
-                <MenuItem value={'OPENED'}>Opened</MenuItem>
-                <MenuItem value={'CLOSED'}>Closed</MenuItem>
-                <MenuItem value={'PERMANENTLY_CLOSED'}>Permanently Closed</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
+          <Grid container>
+            <Grid item xs={12} md={8}>
+              <div>
+                <Typography gutterBottom variant="subtitle1">
+                  Open status
+                </Typography>
+                <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
+                  Open, Close, Permanently Closed
+                </Typography>
+              </div>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <FormControl fullWidth>
+                <InputLabel id="open-status-select-label">OpenStatus</InputLabel>
+                <Select
+                  labelId="open-status-select-label"
+                  id="openStatus"
+                  name="openStatus"
+                  value={formik.values.openStatus}
+                  label="openStatus"
+                  onChange={formik.handleChange}
+                >
+                  <MenuItem value={'OPEN'}>Open</MenuItem>
+                  <MenuItem value={'CLOSE'}>Close</MenuItem>
+                  <MenuItem value={'PERMANENTLY_CLOSED'}>Permanently Closed</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+
+          <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}></Box>
         </CardContent>
-        <CardActions
-          sx={{
-            flexWrap: 'wrap',
-            m: -1,
-          }}
-        >
+        <CardActions sx={{ flexWrap: 'wrap', m: -1 }}>
           <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained">
             Update
           </Button>
@@ -262,7 +260,7 @@ export const RestaurantEditForm = props => {
             </Button>
           </NextLink>
           <Button color="error" disabled={formik.isSubmitting}>
-            Delete user
+            Delete restaurant
           </Button>
         </CardActions>
       </Card>

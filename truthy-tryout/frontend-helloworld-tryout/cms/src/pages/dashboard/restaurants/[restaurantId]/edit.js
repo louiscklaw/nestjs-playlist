@@ -46,6 +46,7 @@ const RestaurantEdit = () => {
     [],
   );
 
+
   if (!restaurant) {
     return null;
   }
