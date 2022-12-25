@@ -6,8 +6,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { UpdateTagDto } from './dto/update-tag.dto';
 
-// import { UserSearchFilterDto } from 'src/auth/dto/user-search-filter.dto';
-// import { TagSearchFilterDto } from './dto/search-tag-dto';
 import { TagEntity } from './entities/tag.entity';
 
 @Injectable()
