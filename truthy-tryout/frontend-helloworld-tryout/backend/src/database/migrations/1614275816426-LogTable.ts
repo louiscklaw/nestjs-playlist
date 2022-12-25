@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 export class LogsTable1614275816426 implements MigrationInterface {
-  indexFields = ['name', 'email', 'username'];
+  indexFields = ['email', 'username'];
   tableName = 'log';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -26,30 +26,24 @@ export class LogsTable1614275816426 implements MigrationInterface {
           {
             name: 'username',
             type: 'varchar',
-            isNullable: false,
-            isUnique: true,
+            isNullable: true,
+            isUnique: false,
             length: '100'
           },
           {
             name: 'email',
             type: 'varchar',
-            isNullable: false,
-            isUnique: true,
+            isNullable: true,
+            isUnique: false,
             length: '100'
           },
-          { name: 'password', type: 'varchar', isNullable: true },
-          { name: 'name', type: 'varchar', isNullable: true },
-          { name: 'address', type: 'varchar', isNullable: true },
-          { name: 'contact', type: 'varchar', isNullable: true },
-          { name: 'salt', type: 'varchar', isNullable: true },
-          { name: 'token', type: 'varchar', isNullable: true },
-          { name: 'address1', type: 'varchar', isNullable: true },
-          { name: 'address2', type: 'varchar', isNullable: true },
-          { name: 'country', type: 'varchar', isNullable: true },
-          { name: 'isVerified', type: 'varchar', isNullable: true },
-          { name: 'phone', type: 'varchar', isNullable: true },
-          { name: 'state', type: 'varchar', isNullable: true },
-          { name: 'status', type: 'varchar', default: `'active'` },
+          {
+            name: 'description',
+            type: 'varchar',
+            isNullable: true,
+            isUnique: false,
+            length: '300'
+          },
           { name: 'createdAt', type: 'timestamp', default: 'now()' },
           { name: 'updatedAt', type: 'timestamp', default: 'now()' }
         ]
@@ -67,33 +61,33 @@ export class LogsTable1614275816426 implements MigrationInterface {
       );
     }
 
-    await queryRunner.addColumn(
-      this.tableName,
-      new TableColumn({
-        name: 'roleId',
-        type: 'int'
-      })
-    );
+    //   await queryRunner.addColumn(
+    //     this.tableName,
+    //     new TableColumn({
+    //       name: 'roleId',
+    //       type: 'int'
+    //     })
+    //   );
 
-    await queryRunner.createForeignKey(
-      this.tableName,
-      new TableForeignKey({
-        columnNames: ['roleId'],
-        referencedColumnNames: ['id'],
-        referencedTableName: 'role',
-        onDelete: 'CASCADE'
-      })
-    );
+    //   await queryRunner.createForeignKey(
+    //     this.tableName,
+    //     new TableForeignKey({
+    //       columnNames: ['roleId'],
+    //       referencedColumnNames: ['id'],
+    //       referencedTableName: 'role',
+    //       onDelete: 'CASCADE'
+    //     })
+    //   );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     const table = await queryRunner.getTable(this.tableName);
 
-    const foreignKey = await table.foreignKeys.find(
-      (fk) => fk.columnNames.indexOf('roleId') !== -1
-    );
-    await queryRunner.dropForeignKey(this.tableName, foreignKey);
-    await queryRunner.dropColumn(this.tableName, 'roleId');
+    // const foreignKey = await table.foreignKeys.find(
+    //   (fk) => fk.columnNames.indexOf('roleId') !== -1
+    // );
+    // await queryRunner.dropForeignKey(this.tableName, foreignKey);
+    // await queryRunner.dropColumn(this.tableName, 'roleId');
 
     for (const field of this.indexFields) {
       const index = `IDX_LOG_${field.toUpperCase()}`;
