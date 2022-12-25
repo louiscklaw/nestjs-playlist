@@ -32,11 +32,13 @@ export class TagsService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} tag`;
+    return this.tagsRepository.findOne({ id: id });
   }
 
-  update(id: number, updateTagDto: UpdateTagDto) {
-    return `This action updates a #${id} tag`;
+  async update(id: number, updateTagDto: UpdateTagDto) {
+    // this.userRepository.updateEntity(user, updateUserDto);
+    // return `This action updates a #${id} tag`;
+    return await this.tagsRepository.update({ id }, updateTagDto);
   }
 
   async remove(id: number) {

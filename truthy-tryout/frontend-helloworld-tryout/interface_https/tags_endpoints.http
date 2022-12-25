@@ -1,6 +1,6 @@
 
 ###
-PUT http://localhost:7777/tags/1
+PUT http://localhost:7777/tags/3
 content-type: application/json
 
 { "username": "admin", "address":"new address" }
@@ -13,10 +13,10 @@ Get http://localhost:7777/tags
 DELETE http://localhost:7777/tags/2
 
 ###
-PUT http://localhost:7777/tags/1
+PATCH http://localhost:7777/tags/4
 content-type: application/json
 
-{ "username": "admin", "contact":"new contact" }
+{ "username": "admin", "description":"new contact" }
 
 ###
 POST http://localhost:7777/tags
@@ -28,7 +28,7 @@ content-type: application/json
 }
 
 ###
-GET http://localhost:7777/tags/1
+GET http://localhost:7777/tags/3
 
 ###
 GET http://localhost:7777/tags
