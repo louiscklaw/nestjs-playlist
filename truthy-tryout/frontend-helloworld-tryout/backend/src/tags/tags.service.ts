@@ -18,7 +18,12 @@ export class TagsService {
   ) {}
 
   create(createTagDto: CreateTagDto) {
-    return 'This action adds a new tag';
+    // const restaurant = new TagEntity();
+    // restaurant.username = createTagDto.username;
+    // restaurant.email = createRestaurantDto.email;
+
+    // return 'This action adds a new tag';
+    return this.tagsRepository.save(createTagDto);
   }
 
   async findAll() {
@@ -34,7 +39,8 @@ export class TagsService {
     return `This action updates a #${id} tag`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} tag`;
+  async remove(id: number) {
+    // return `This action removes a #${id} tag`;
+    return await this.tagsRepository.delete(id);
   }
 }

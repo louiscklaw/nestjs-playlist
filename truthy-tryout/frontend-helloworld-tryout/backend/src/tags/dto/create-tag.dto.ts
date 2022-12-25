@@ -12,4 +12,7 @@ import {
 export class CreateTagDto {
   @IsString()
   username: string;
+
+  @IsString()
+  description: string;
 }

@@ -10,7 +10,7 @@ Get http://localhost:7777/tags
 
 
 ###
-DELETE http://localhost:7777/tags/1
+DELETE http://localhost:7777/tags/2
 
 ###
 PUT http://localhost:7777/tags/1
@@ -23,8 +23,7 @@ POST http://localhost:7777/tags
 content-type: application/json
 
 {
-  "email": "faker.internet.email()",
-  "name": "faker.animal.cat()",
+  "username": "new tag",
   "description": "`tag ${i} description`"
 }
 
