@@ -23,7 +23,8 @@ export default class CreateRestaurantSeed {
             if (i > 5 && i < 10) faker.locale = 'zh_TW';
             if (i > 10 && i < 99) faker.locale = 'zh_CN';
             return {
-              name: faker.company.companyName(),
+              username: faker.company.name(),
+              name: faker.company.name(),
               email: faker.internet.email(),
               description: `restaurant ${i} description`,
               website: 'https://www.openrice.com/',

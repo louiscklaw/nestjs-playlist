@@ -1,0 +1,47 @@
+
+###
+PUT http://localhost:7777/tags/1
+content-type: application/json
+
+{ "username": "admin", "address":"new address" }
+
+###
+Get http://localhost:7777/tags
+
+
+###
+DELETE http://localhost:7777/tags/1
+
+###
+PUT http://localhost:7777/tags/1
+content-type: application/json
+
+{ "username": "admin", "contact":"new contact" }
+
+###
+POST http://localhost:7777/tags
+content-type: application/json
+
+{
+  "email": "faker.internet.email()",
+  "name": "faker.animal.cat()",
+  "description": "`tag ${i} description`"
+}
+
+###
+GET http://localhost:7777/tags/1
+
+###
+GET http://localhost:7777/tags
+
+###
+GET http://localhost:7777/dashboard/os
+
+###
+GET http://localhost:7777/dashboard/browser
+
+###
+POST http://localhost:7777/logout
+content-type: application/json
+
+{}

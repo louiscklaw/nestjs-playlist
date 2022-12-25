@@ -11,5 +11,4 @@ import { RestaurantEntity } from './entities/restaurant.entity';
   controllers: [RestaurantsController],
   providers: [RestaurantsService]
 })
-
 export class RestaurantsModule {}
